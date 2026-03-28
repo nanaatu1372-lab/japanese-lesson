@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ビジネス日本語30時間 | 第1・2課</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+/* ═══ RESET & BASE ═══ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a5276;--blue2:#2980b9;--green:#117a65;--green2:#27ae60;
+  --purple:#6e2f8a;--red:#922b21;--amber:#7d6608;--gray:#718096;
+  --light:#f0f4f8;--border:#e2e8f0;--radius:14px;--shadow:0 2px 10px rgba(0,0,0,0.08)
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato','Noto Sans JP',sans-serif;background:var(--light);color:#2d3748;min-height:100vh}
+
+/* ═══ NAVBAR ═══ */
+.navbar{
+  background:var(--blue);color:white;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  height:56px;position:sticky;top:0;z-index:300;box-shadow:0 2px 10px rgba(0,0,0,0.25)
+}
+.navbar-brand{font-size:1rem;font-weight:700}
+.navbar-sub{font-size:0.72rem;opacity:0.7}
+.navbar-right{display:flex;gap:8px;align-items:center}
+.print-btn{
+  padding:6px 14px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.6);
+  background:rgba(255,255,255,0.1);color:white;font-size:0.8rem;font-family:inherit;
+  font-weight:700;cursor:pointer;transition:all .15s
+}
+.print-btn:hover{background:rgba(255,255,255,0.25)}
+.qr-btn{
+  padding:6px 14px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.6);
+  background:rgba(255,255,255,0.1);color:white;font-size:0.8rem;font-family:inherit;
+  font-weight:700;cursor:pointer;transition:all .15s
+}
+.qr-btn:hover{background:rgba(255,255,255,0.25)}
+
+/* ═══ QR MODAL ═══ */
+.qr-modal{
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center
+}
+.qr-modal.show{display:flex}
+.qr-box{
+  background:white;border-radius:20px;padding:32px 28px 24px;
+  text-align:center;max-width:340px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.3)
+}
+.qr-box h3{font-size:1.1rem;color:var(--blue);margin-bottom:6px}
+.qr-box p{font-size:0.82rem;color:var(--gray);margin-bottom:20px;line-height:1.5}
+#qrcode{display:flex;justify-content:center;margin-bottom:16px}
+.qr-url{font-size:0.75rem;color:var(--blue2);word-break:break-all;margin-bottom:16px;padding:8px;background:#f0f4f8;border-radius:8px}
+.qr-close{
+  padding:10px 28px;border-radius:10px;border:none;background:var(--blue);
+  color:white;font-size:0.9rem;font-weight:700;font-family:inherit;cursor:pointer
+}
+
+/* ═══ HERO ═══ */
+.hero{
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:white;padding:28px 20px 24px;text-align:center
+}
+.hero h1{font-size:1.7rem;font-weight:700;line-height:1.3}
+.hero h1 span{font-size:0.95rem;font-weight:400;opacity:0.8;display:block;margin-top:5px}
+.hero-flags{font-size:1.4rem;margin-top:8px;letter-spacing:4px}
+.hero-desc{font-size:0.82rem;opacity:0.8;margin-top:6px}
+
+/* ═══ LESSON TABS ═══ */
+.lesson-bar{
+  display:flex;background:#1a3a5c;border-bottom:2px solid #0f2034;
+  overflow-x:auto
+}
+.lesson-tab{
+  padding:10px 20px;border:none;background:transparent;color:rgba(255,255,255,0.6);
+  font-size:0.88rem;font-family:inherit;font-weight:700;cursor:pointer;
+  white-space:nowrap;border-bottom:3px solid transparent;transition:all .18s
+}
+.lesson-tab:hover{color:white}
+.lesson-tab.active{color:#7dd3fc;border-bottom-color:#7dd3fc}
+
+/* ═══ SECTION TABS ═══ */
+.tab-bar{
+  display:flex;background:white;border-bottom:2px solid var(--border);
+  position:sticky;top:56px;z-index:200;box-shadow:0 2px 6px rgba(0,0,0,0.05);overflow-x:auto
+}
+.tab-btn{
+  flex:1;min-width:80px;padding:13px 8px;border:none;background:white;
+  color:var(--gray);font-size:0.85rem;font-family:inherit;font-weight:700;
+  cursor:pointer;border-bottom:3px solid transparent;transition:all .18s;white-space:nowrap
+}
+.tab-btn:hover{color:var(--blue2)}
+.tab-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
+
+/* ═══ SUB CONTROLS ═══ */
+.sub-controls{
+  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
+  padding:12px 16px;background:white;border-bottom:1px solid var(--border)
+}
+.filter-label{width:100%;text-align:center;font-size:0.7rem;color:#a0aec0;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+.sec-btn{
+  padding:6px 14px;border:2px solid var(--border);border-radius:20px;background:white;
+  color:var(--gray);font-size:0.8rem;font-family:inherit;cursor:pointer;transition:all .15s;font-weight:600
+}
+.sec-btn:hover{border-color:var(--green);color:var(--green)}
+.sec-btn.active{background:var(--green);border-color:var(--green);color:white}
+
+/* ═══ PROGRESS ═══ */
+.progress-wrap{
+  background:white;padding:8px 20px;display:flex;align-items:center;
+  gap:10px;border-bottom:1px solid var(--border);font-size:0.8rem;color:var(--gray)
+}
+.progress-bar{flex:1;height:7px;background:var(--border);border-radius:999px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--green2));border-radius:999px;transition:width .4s}
+
+/* ═══ PANES ═══ */
+.lesson-pane{display:none}.lesson-pane.active{display:block}
+.pane{display:none}.pane.active{display:block}
+.section-group{display:none}.section-group.visible{display:block}
+.section-title{
+  font-size:0.88rem;font-weight:700;color:var(--green);
+  padding:18px 18px 6px;letter-spacing:0.06em;text-transform:uppercase;
+  display:flex;align-items:center;gap:8px
+}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ═══ VOCAB CARDS ═══ */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:13px;padding:8px 16px 24px}
+.vocab-card{background:white;border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid #e8f4f8;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.vocab-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.12)}
+.vocab-card.learned{border-color:var(--green2);background:#f0faf5}
+.lang-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;padding:9px 14px;border-bottom:1px solid #f7fafc}
+.lang-row:last-of-type{border-bottom:none}
+.lang-info{flex:1;min-width:0}
+.lang-label-sm{font-size:0.67rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:2px}
+.lang-text{font-size:0.95rem;line-height:1.45;color:#2d3748}
+.reading-row{display:flex;align-items:center;gap:6px;margin-top:3px}
+.reading-text{font-size:0.8rem;color:var(--gray)}
+.lang-ja .lang-label-sm{color:var(--blue)}.lang-en .lang-label-sm{color:#145a32}
+.lang-zh .lang-label-sm{color:var(--purple)}.lang-ko .lang-label-sm{color:var(--red)}.lang-vi .lang-label-sm{color:var(--amber)}
+.card-footer{padding:6px 14px 10px;display:flex;justify-content:flex-end}
+.learned-btn{font-size:0.75rem;padding:4px 12px;border-radius:12px;border:1px solid #cbd5e0;background:white;color:var(--gray);cursor:pointer;font-family:inherit;transition:all .15s}
+.learned-btn:hover{border-color:var(--green2);color:var(--green2)}
+.vocab-card.learned .learned-btn{background:var(--green2);border-color:var(--green2);color:white}
+
+/* ═══ EXPR CARDS ═══ */
+.expr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:13px;padding:8px 16px 24px}
+.expr-card{background:white;border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid #d6eaf8;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.expr-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.12)}
+.expr-jp{background:#ebf5fb;padding:13px 14px;border-bottom:1px solid #d6eaf8;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.expr-jp-text{font-size:1.05rem;font-weight:700;color:var(--blue);line-height:1.45;flex:1}
+
+/* ═══ DIALOGUE CARDS ═══ */
+.dialogue-wrap{padding:10px 16px 28px;display:flex;flex-direction:column;gap:16px}
+.dialogue-card{background:white;border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid #e8d5f5;overflow:hidden}
+.dialogue-header{background:linear-gradient(135deg,var(--purple),#9b59b6);color:white;padding:13px 16px;font-weight:700;font-size:0.95rem}
+.dialogue-lines{padding:12px 16px;display:flex;flex-direction:column;gap:12px}
+.dialogue-line{padding-bottom:12px;border-bottom:1px solid #f7fafc}
+.dialogue-line:last-child{border-bottom:none;padding-bottom:0}
+.speaker-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.speaker-badge{flex-shrink:0;width:30px;height:30px;border-radius:50%;color:white;font-size:0.85rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.speaker-jp{font-size:0.97rem;color:var(--blue);font-weight:600;line-height:1.55;flex:1}
+.lang-translations{margin-left:40px;display:flex;flex-direction:column;gap:5px}
+.trans-row{display:flex;align-items:flex-start;justify-content:space-between;gap:6px;padding:6px 10px;border-radius:9px}
+.trans-label{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-right:6px;flex-shrink:0;margin-top:2px}
+.trans-text{font-size:0.88rem;color:#4a5568;line-height:1.5;flex:1}
+.trans-row.r-en{background:#eafaf1}.trans-row.r-en .trans-label{color:#145a32}
+.trans-row.r-zh{background:#f5eef8}.trans-row.r-zh .trans-label{color:var(--purple)}
+.trans-row.r-ko{background:#fdedec}.trans-row.r-ko .trans-label{color:var(--red)}
+.trans-row.r-vi{background:#fef9e7}.trans-row.r-vi .trans-label{color:var(--amber)}
+.sub-practice{margin:8px 16px 12px;background:#fef9e7;border-radius:10px;padding:10px 14px;font-size:0.83rem;color:var(--amber);line-height:1.7}
+.sub-practice strong{display:block;margin-bottom:3px;color:#1f618d;font-size:0.78rem;letter-spacing:0.05em;text-transform:uppercase}
+
+/* ═══ SPEAK BUTTON ═══ */
+.speak-btn{flex-shrink:0;width:33px;height:33px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.95rem;transition:all .15s}
+.speak-btn:hover{transform:scale(1.12)}.speak-btn:active{transform:scale(0.9)}
+.speak-btn.speaking{animation:pulse .7s infinite alternate}
+@keyframes pulse{from{box-shadow:0 0 0 0 rgba(41,128,185,.5)}to{box-shadow:0 0 0 8px rgba(41,128,185,0)}}
+.lang-ja .speak-btn{background:#ebf5fb;color:var(--blue2)}.lang-ja .speak-btn:hover{background:var(--blue2);color:white}
+.lang-en .speak-btn{background:#eafaf1;color:var(--green2)}.lang-en .speak-btn:hover{background:var(--green2);color:white}
+.lang-zh .speak-btn{background:#f5eef8;color:#8e44ad}.lang-zh .speak-btn:hover{background:#8e44ad;color:white}
+.lang-ko .speak-btn{background:#fdedec;color:#c0392b}.lang-ko .speak-btn:hover{background:#c0392b;color:white}
+.lang-vi .speak-btn{background:#fef9e7;color:#d4ac0d}.lang-vi .speak-btn:hover{background:#d4ac0d;color:white}
+.trans-row.r-en .speak-btn{background:#c8f7d6;color:var(--green2)}
+.trans-row.r-zh .speak-btn{background:#e8d5f5;color:#8e44ad}
+.trans-row.r-ko .speak-btn{background:#f9c0bb;color:#c0392b}
+.trans-row.r-vi .speak-btn{background:#fde8a0;color:#d4ac0d}
+.btn-ja{background:#ebf5fb;color:var(--blue2)}.btn-ja:hover{background:var(--blue2);color:white}
+
+/* ═══ PRACTICE ═══ */
+.practice-wrap{padding:16px 16px 40px;display:flex;flex-direction:column;gap:20px}
+.scenario-card{background:white;border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid var(--border);overflow:hidden}
+.scenario-header{background:linear-gradient(135deg,#1f618d,var(--blue2));color:white;padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
+.scenario-header h3{font-size:1rem;font-weight:700}
+.illustration{padding:24px 20px 16px;display:flex;justify-content:center;align-items:flex-end;gap:32px;min-height:160px;background:linear-gradient(180deg,#eaf4fb,#d6eaf8);position:relative;overflow:hidden}
+.ill-bg-floor{position:absolute;bottom:0;left:0;right:0;height:28px;background:linear-gradient(180deg,#cfd8dc,#b0bec5)}
+.ill-building{position:absolute;top:10px;right:30px;width:55px;height:75px;background:#d5e8f0;border-radius:4px;opacity:0.4}
+.ill-building::before{content:'';position:absolute;top:8px;left:6px;right:6px;height:7px;background:#aed6f1;border-radius:2px}
+.ill-building::after{content:'';position:absolute;top:22px;left:6px;right:6px;height:7px;background:#aed6f1;border-radius:2px}
+.person{display:flex;flex-direction:column;align-items:center;position:relative;z-index:2}
+.person-head{width:42px;height:42px;border-radius:50%;background:#f5cba7;border:3px solid #d4a574;position:relative;margin-bottom:2px}
+.person-head::before{content:'';position:absolute;top:-8px;left:2px;right:2px;height:18px;border-radius:50% 50% 0 0;background:#5d4037}
+.person-head.female::before{height:22px;top:-10px;background:#6d4c41;left:-3px;right:-3px}
+.person-head .face-smile{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:14px;height:6px;border-bottom:2px solid #a0522d;border-radius:0 0 8px 8px}
+.person-body{width:48px;height:60px;border-radius:8px 8px 4px 4px;display:flex;align-items:center;justify-content:center;position:relative}
+.suit-dark{background:#2c3e50}.suit-blue{background:#1f618d}.suit-gray{background:#607d8b}.blouse{background:#e8d5f5}
+.person-tie{position:absolute;top:8px;width:9px;height:28px;background:#c0392b;border-radius:2px 2px 4px 4px}
+.person-legs{display:flex;gap:7px;margin-top:2px}
+.person-leg{width:17px;height:36px;border-radius:4px 4px 6px 6px;background:#2c3e50}
+.person-leg.skirt{width:42px;height:32px;border-radius:4px 4px 8px 8px;background:#4a235a;margin-top:-2px}
+.person-feet{display:flex;gap:7px}
+.person-foot{width:19px;height:9px;border-radius:4px;background:#1a1a1a}
+.person-arm-l,.person-arm-r{position:absolute;width:13px;height:40px;border-radius:6px;background:inherit;top:6px}
+.person-arm-l{left:-11px;transform:rotate(-8deg)}.person-arm-r{right:-11px;transform:rotate(8deg)}
+.bowing .person-head,.bowing .person-body,.bowing .person-arm-l,.bowing .person-arm-r{animation:bow 2s ease-in-out infinite}
+@keyframes bow{0%,100%{transform:none}40%,60%{transform:rotate(28deg) translateY(4px)}}
+.bubble{position:absolute;background:white;border-radius:12px;padding:7px 11px;font-size:0.75rem;font-weight:700;color:var(--blue);box-shadow:0 2px 8px rgba(0,0,0,0.15);max-width:140px;text-align:center;border:2px solid #d6eaf8;line-height:1.4;top:12px;left:16px}
+.bubble::after{content:'';position:absolute;bottom:-9px;left:18px;border:5px solid transparent;border-top-color:white}
+.question-area{padding:16px 18px}
+.question-label{font-size:0.82rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px}
+.question-text{font-size:1.05rem;font-weight:700;color:var(--blue);margin-bottom:14px;line-height:1.5}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice-btn{padding:12px 14px;border-radius:10px;border:2px solid var(--border);background:white;color:#2d3748;font-size:0.88rem;font-family:inherit;cursor:pointer;transition:all .18s;line-height:1.4;text-align:left;font-weight:600}
+.choice-btn:hover:not(:disabled){border-color:var(--blue2);background:#ebf5fb;color:var(--blue)}
+.choice-btn.correct{background:#eafaf1;border-color:var(--green2);color:#145a32}
+.choice-btn.wrong{background:#fdedec;border-color:#c0392b;color:#922b21}
+.choice-btn:disabled{cursor:default}
+.feedback{margin-top:12px;padding:10px 14px;border-radius:10px;font-size:0.9rem;font-weight:700;display:none}
+.feedback.show{display:block}.feedback.ok{background:#eafaf1;color:#145a32}.feedback.ng{background:#fdedec;color:#922b21}
+.sort-pool,.sort-answer{display:flex;flex-wrap:wrap;gap:8px;min-height:48px;padding:10px;border-radius:10px;margin-bottom:12px}
+.sort-pool{background:#f7fafc;border:2px dashed var(--border)}
+.sort-answer{background:#ebf5fb;border:2px dashed #aed6f1}
+.sort-chip{padding:8px 14px;border-radius:20px;background:white;border:2px solid var(--border);font-size:0.88rem;cursor:pointer;transition:all .15s;font-weight:600;user-select:none}
+.sort-chip:hover{border-color:var(--blue2);background:#ebf5fb;color:var(--blue)}
+.sort-chip.placed{background:#d6eaf8;border-color:var(--blue2);color:var(--blue)}
+.sort-chip.correct-chip{background:#eafaf1;border-color:var(--green2);color:#145a32}
+.sort-chip.wrong-chip{background:#fdedec;border-color:#c0392b;color:#922b21}
+.check-sort-btn{padding:10px 24px;border-radius:10px;border:none;background:var(--blue);color:white;font-size:0.9rem;font-weight:700;font-family:inherit;cursor:pointer;transition:all .15s}
+.check-sort-btn:hover{background:var(--blue2)}
+.score-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:#f7fafc;border-top:1px solid var(--border);font-size:0.85rem;color:var(--gray)}
+.score-val{font-weight:700;color:var(--blue);font-size:1rem}
+.next-btn{padding:9px 20px;border-radius:10px;border:none;background:var(--green);color:white;font-size:0.88rem;font-weight:700;font-family:inherit;cursor:pointer;transition:all .15s}
+.next-btn:hover{background:var(--green2)}.next-btn:disabled{background:#cbd5e0;cursor:default}
+.progress-dots{display:flex;gap:6px;justify-content:center;margin-bottom:16px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--border);transition:all .3s}
+.dot.active{background:var(--blue2);transform:scale(1.2)}.dot.done{background:var(--green2)}
+
+/* ═══ FOOTER ═══ */
+footer{text-align:center;padding:28px 20px 24px;font-size:0.82rem;color:#718096;border-top:1px solid var(--border);background:white;margin-top:20px}
+footer .supervisor{font-size:0.95rem;font-weight:700;color:var(--blue);margin-bottom:6px}
+footer .supervisor span{color:var(--gray);font-weight:400}
+
+/* ═══ PRINT STYLES ═══ */
+@media print{
+  .navbar,.lesson-bar,.tab-bar,.sub-controls,.progress-wrap,.speak-btn,.learned-btn,
+  .print-btn,.qr-btn,.qr-modal,.practice-wrap,.score-bar,.next-btn,.check-sort-btn,
+  .sort-pool,.sort-answer,.choices,.feedback,.progress-dots{display:none!important}
+  body{background:white;font-size:11pt}
+  .lesson-pane{display:block!important}
+  .pane{display:block!important}
+  .section-group{display:block!important}
+  .vocab-card,.expr-card,.dialogue-card{break-inside:avoid;box-shadow:none;border:1px solid #ccc;margin-bottom:8px}
+  .cards-grid,.expr-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .dialogue-wrap{gap:8px}
+  .lang-translations{margin-left:20px}
+  footer{display:block!important}
+  .print-header{display:block!important}
+}
+.print-header{display:none;text-align:center;padding:16px 0 8px;border-bottom:2px solid var(--blue);margin-bottom:16px}
+.print-header h2{font-size:1.4rem;color:var(--blue)}
+.print-header p{font-size:0.85rem;color:var(--gray);margin-top:4px}
+
+@media(max-width:600px){
+  .hero h1{font-size:1.3rem}
+  .cards-grid,.expr-grid{grid-template-columns:1fr}
+  .lang-translations{margin-left:0}
+  .choices{grid-template-columns:1fr}
+  .illustration{gap:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div>
+    <div class="navbar-brand">🇯🇵 ビジネス日本語30時間</div>
+    <div class="navbar-sub">Business Japanese in 30 Hours</div>
+  </div>
+  <div class="navbar-right">
+    <button class="qr-btn" onclick="showQR()">📱 QR</button>
+    <button class="print-btn" onclick="window.print()">🖨️ 印刷</button>
+    <button class="print-btn" onclick="teacherLogin()" id="teacher-btn">👩‍🏫 先生</button>
+  </div>
+</nav>
+
+<!-- Teacher Modal -->
+<div class="qr-modal" id="teacherModal">
+  <div class="qr-box">
+    <h3 id="teacher-modal-title">👩‍🏫 先生モード</h3>
+    <p id="teacher-modal-desc" style="margin-bottom:14px">パスワードを入力してください</p>
+    <input type="password" id="teacher-pw" placeholder="パスワード"
+      style="width:100%;padding:10px 14px;border-radius:10px;border:1.5px solid #e2e8f0;
+             font-size:1rem;font-family:inherit;margin-bottom:12px;box-sizing:border-box"
+      onkeydown="if(event.key==='Enter')checkTeacher()">
+    <div id="teacher-error" style="color:#c0392b;font-size:0.82rem;margin-bottom:8px;display:none">
+      パスワードが違います
+    </div>
+    <div style="display:flex;gap:8px;justify-content:center">
+      <button class="qr-close" onclick="checkTeacher()">ログイン</button>
+      <button class="qr-close" style="background:#718096"
+        onclick="document.getElementById('teacherModal').classList.remove('show')">キャンセル</button>
+    </div>
+  </div>
+</div>
+<div class="qr-modal" id="qrModal" onclick="hideQR(event)">
+  <div class="qr-box">
+    <h3>📱 このサイトのQRコード</h3>
+    <p>スマートフォンでスキャンして<br>授業中にアクセスできます</p>
+    <div id="qrcode"></div>
+    <div class="qr-url" id="qrUrl"></div>
+    <button class="qr-close" onclick="document.getElementById('qrModal').classList.remove('show')">閉じる</button>
+  </div>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>ビジネス日本語30時間<span>Business Japanese in 30 Hours</span></h1>
+  <div class="hero-flags">🇯🇵 🇺🇸 🇨🇳 🇰🇷 🇻🇳</div>
+  <p class="hero-desc">🔊 クリックして音声を聞こう / Click 🔊 to hear pronunciation</p>
+</div>
+
+<!-- Print header (print only) -->
+<div class="print-header">
+  <h2>ビジネス日本語30時間</h2>
+  <p>監修：垰田直美　日本語講師</p>
+</div>
+
+<!-- Lesson tabs -->
+<div class="lesson-bar">
+  <button class="lesson-tab active" onclick="switchLesson(1,this)">第1課　紹介する</button>
+  <button class="lesson-tab" onclick="switchLesson(2,this)">第2課　あいさつをする</button>
+  <button class="lesson-tab" onclick="switchLesson(3,this)">🔒 第3課　電話をかける・受ける</button>
+  <button class="lesson-tab" onclick="switchLesson(4,this)">🔒 第4課　注意をする・受ける</button>
+  <button class="lesson-tab" onclick="switchLesson(5,this)">🔒 第5課　頼む・断る</button>
+</div>
+
+<!-- ══════════════════════════════════
+     LESSON 1
+══════════════════════════════════ -->
+<div id="lesson-1" class="lesson-pane active">
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('l1-vocab',this,'l1')">📚 ことば</button>
+  <button class="tab-btn" onclick="switchTab('l1-expr',this,'l1')">💬 表現</button>
+  <button class="tab-btn" onclick="switchTab('l1-dialogue',this,'l1')">🗣 談話</button>
+  <button class="tab-btn" onclick="switchTab('l1-practice',this,'l1')">🎯 練習</button>
+</div>
+
+<div id="pane-l1-vocab" class="pane active">
+  <div class="sub-controls">
+    <div class="filter-label">セクション</div>
+    <button class="sec-btn active" onclick="filterSection('l1-vocab','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l1-vocab','d1',this)">談話1</button>
+    <button class="sec-btn" onclick="filterSection('l1-vocab','d2',this)">談話2</button>
+    <button class="sec-btn" onclick="filterSection('l1-vocab','d3',this)">談話3</button>
+    <button class="sec-btn" onclick="filterSection('l1-vocab','k12',this)">会話1・2</button>
+    <button class="sec-btn" onclick="filterSection('l1-vocab','k3',this)">会話3</button>
+    <button class="sec-btn" onclick="filterSection('l1-vocab','r1',this)">練習1</button>
+  </div>
+  <div class="progress-wrap">
+    <span id="l1-prog-text">0 / 0 覚えた</span>
+    <div class="progress-bar"><div class="progress-fill" id="l1-prog-fill" style="width:0%"></div></div>
+    <span id="l1-prog-pct">0%</span>
+  </div>
+  <div id="l1-vocab-cards"></div>
+</div>
+
+<div id="pane-l1-expr" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">カテゴリー</div>
+    <button class="sec-btn active" onclick="filterSection('l1-expr','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l1-expr','self',this)">① 自己紹介</button>
+    <button class="sec-btn" onclick="filterSection('l1-expr','greet',this)">② あいさつ</button>
+    <button class="sec-btn" onclick="filterSection('l1-expr','intro',this)">③ 他者紹介</button>
+  </div>
+  <div id="l1-expr-cards"></div>
+</div>
+
+<div id="pane-l1-dialogue" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">談話</div>
+    <button class="sec-btn active" onclick="filterSection('l1-dialogue','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l1-dialogue','d1',this)">談話1</button>
+    <button class="sec-btn" onclick="filterSection('l1-dialogue','d2',this)">談話2</button>
+    <button class="sec-btn" onclick="filterSection('l1-dialogue','d3',this)">談話3</button>
+    <button class="sec-btn" onclick="filterSection('l1-dialogue','d4',this)">談話4</button>
+  </div>
+  <div id="l1-dialogue-cards"></div>
+</div>
+
+<div id="pane-l1-practice" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">練習タイプ</div>
+    <button class="sec-btn active" onclick="setPracticeType('quiz','l1',this)">🎯 4択クイズ</button>
+    <button class="sec-btn" onclick="setPracticeType('sort','l1',this)">🔀 並べ替え</button>
+  </div>
+  <div class="practice-wrap" id="l1-practice-area"></div>
+</div>
+
+</div><!-- /lesson-1 -->
+
+<!-- ══════════════════════════════════
+     LESSON 2
+══════════════════════════════════ -->
+<div id="lesson-2" class="lesson-pane">
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('l2-vocab',this,'l2')">📚 ことば</button>
+  <button class="tab-btn" onclick="switchTab('l2-expr',this,'l2')">💬 表現</button>
+  <button class="tab-btn" onclick="switchTab('l2-dialogue',this,'l2')">🗣 談話</button>
+  <button class="tab-btn" onclick="switchTab('l2-practice',this,'l2')">🎯 練習</button>
+</div>
+
+<div id="pane-l2-vocab" class="pane active">
+  <div class="sub-controls">
+    <div class="filter-label">セクション</div>
+    <button class="sec-btn active" onclick="filterSection('l2-vocab','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l2-vocab','d1',this)">談話1</button>
+    <button class="sec-btn" onclick="filterSection('l2-vocab','d2',this)">談話2</button>
+    <button class="sec-btn" onclick="filterSection('l2-vocab','d3',this)">談話3</button>
+    <button class="sec-btn" onclick="filterSection('l2-vocab','d4',this)">談話4</button>
+    <button class="sec-btn" onclick="filterSection('l2-vocab','k1',this)">会話1</button>
+    <button class="sec-btn" onclick="filterSection('l2-vocab','k2',this)">会話2</button>
+    <button class="sec-btn" onclick="filterSection('l2-vocab','k3',this)">会話3</button>
+    <button class="sec-btn" onclick="filterSection('l2-vocab','r1',this)">練習1</button>
+    <button class="sec-btn" onclick="filterSection('l2-vocab','r2',this)">練習2</button>
+  </div>
+  <div class="progress-wrap">
+    <span id="l2-prog-text">0 / 0 覚えた</span>
+    <div class="progress-bar"><div class="progress-fill" id="l2-prog-fill" style="width:0%"></div></div>
+    <span id="l2-prog-pct">0%</span>
+  </div>
+  <div id="l2-vocab-cards"></div>
+</div>
+
+<div id="pane-l2-expr" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">カテゴリー</div>
+    <button class="sec-btn active" onclick="filterSection('l2-expr','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l2-expr','apology',this)">謝罪</button>
+    <button class="sec-btn" onclick="filterSection('l2-expr','reunion',this)">久しぶり</button>
+    <button class="sec-btn" onclick="filterSection('l2-expr','congrats',this)">お祝い</button>
+    <button class="sec-btn" onclick="filterSection('l2-expr','farewell',this)">退職・転勤</button>
+    <button class="sec-btn" onclick="filterSection('l2-expr','other',this)">その他</button>
+  </div>
+  <div id="l2-expr-cards"></div>
+</div>
+
+<div id="pane-l2-dialogue" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">談話</div>
+    <button class="sec-btn active" onclick="filterSection('l2-dialogue','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l2-dialogue','d1',this)">談話1</button>
+    <button class="sec-btn" onclick="filterSection('l2-dialogue','d2',this)">談話2</button>
+    <button class="sec-btn" onclick="filterSection('l2-dialogue','d3',this)">談話3</button>
+    <button class="sec-btn" onclick="filterSection('l2-dialogue','d4',this)">談話4</button>
+  </div>
+  <div id="l2-dialogue-cards"></div>
+</div>
+
+<div id="pane-l2-practice" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">練習タイプ</div>
+    <button class="sec-btn active" onclick="setPracticeType('quiz','l2',this)">🎯 4択クイズ</button>
+    <button class="sec-btn" onclick="setPracticeType('sort','l2',this)">🔀 並べ替え</button>
+  </div>
+  <div class="practice-wrap" id="l2-practice-area"></div>
+</div>
+
+</div><!-- /lesson-2 -->
+
+<!-- LESSON 3 -->
+<div id="lesson-3" class="lesson-pane">
+
+<!-- 購入バナー -->
+<div class="purchase-banner" style="background:linear-gradient(135deg,#6e2f8a,#9b59b6);color:white;padding:20px 20px;text-align:center;">
+  <div style="font-size:0.85rem;opacity:0.85;margin-bottom:4px">🔒 この内容は有料コンテンツです</div>
+  <div style="font-size:1.2rem;font-weight:700;margin-bottom:4px">第3課　電話をかける・受ける</div>
+  <div style="font-size:0.9rem;opacity:0.9;margin-bottom:16px">語彙・表現・談話・練習クイズを含む全コンテンツ</div>
+  <a href="https://buy.stripe.com/dRm4gz0wS9ok4HigLBaMU00" target="_blank"
+     style="display:inline-block;background:white;color:#6e2f8a;font-weight:700;font-size:1rem;
+            padding:12px 32px;border-radius:30px;text-decoration:none;transition:all .15s;
+            box-shadow:0 4px 12px rgba(0,0,0,0.2)">
+    💳 ¥1,980 で購入する
+  </a>
+  <div style="font-size:0.75rem;opacity:0.75;margin-top:10px">Apple Pay・クレジットカード対応 / Powered by Stripe</div>
+</div>
+
+<!-- 無料プレビュー -->
+<div class="preview-notice" style="background:#f5eef8;border-bottom:1px solid #e8d5f5;padding:10px 18px;font-size:0.82rem;color:#6e2f8a;text-align:center;">
+  👇 以下は無料プレビューです（購入後は全コンテンツが利用できます）
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('l3-vocab',this,'l3')">📚 ことば</button>
+  <button class="tab-btn" onclick="switchTab('l3-expr',this,'l3')">💬 表現</button>
+  <button class="tab-btn" onclick="switchTab('l3-dialogue',this,'l3')">🗣 談話</button>
+  <button class="tab-btn" onclick="switchTab('l3-practice',this,'l3')">🎯 練習</button>
+</div>
+<div id="pane-l3-vocab" class="pane active">
+  <div class="sub-controls">
+    <div class="filter-label">セクション</div>
+    <button class="sec-btn active" onclick="filterSection('l3-vocab','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l3-vocab','d1',this)">談話1</button>
+    <button class="sec-btn" onclick="filterSection('l3-vocab','d2',this)">談話2</button>
+    <button class="sec-btn" onclick="filterSection('l3-vocab','d3',this)">談話3</button>
+    <button class="sec-btn" onclick="filterSection('l3-vocab','d4',this)">談話4</button>
+    <button class="sec-btn" onclick="filterSection('l3-vocab','k1',this)">会話1</button>
+    <button class="sec-btn" onclick="filterSection('l3-vocab','k2',this)">会話2</button>
+    <button class="sec-btn" onclick="filterSection('l3-vocab','r1',this)">練習1</button>
+    <button class="sec-btn" onclick="filterSection('l3-vocab','r2',this)">練習2</button>
+  </div>
+  <div class="progress-wrap">
+    <span id="l3-prog-text">0 / 0 覚えた</span>
+    <div class="progress-bar"><div class="progress-fill" id="l3-prog-fill" style="width:0%"></div></div>
+    <span id="l3-prog-pct">0%</span>
+  </div>
+  <div id="l3-vocab-cards"></div>
+</div>
+<div id="pane-l3-expr" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">カテゴリー</div>
+    <button class="sec-btn active" onclick="filterSection('l3-expr','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l3-expr','call',this)">電話をかける</button>
+    <button class="sec-btn" onclick="filterSection('l3-expr','receive',this)">電話を受ける</button>
+  </div>
+  <div id="l3-expr-cards"></div>
+</div>
+<div id="pane-l3-dialogue" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">談話</div>
+    <button class="sec-btn active" onclick="filterSection('l3-dialogue','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l3-dialogue','d1',this)">談話1</button>
+    <button class="sec-btn" onclick="filterSection('l3-dialogue','d2',this)">談話2</button>
+    <button class="sec-btn" onclick="filterSection('l3-dialogue','d3',this)">談話3</button>
+    <button class="sec-btn" onclick="filterSection('l3-dialogue','d4',this)">談話4</button>
+  </div>
+  <div id="l3-dialogue-cards"></div>
+</div>
+<div id="pane-l3-practice" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">練習タイプ</div>
+    <button class="sec-btn active" onclick="setPracticeType('quiz','l3',this)">🎯 4択クイズ</button>
+    <button class="sec-btn" onclick="setPracticeType('sort','l3',this)">🔀 並べ替え</button>
+  </div>
+  <div class="practice-wrap" id="l3-practice-area"></div>
+</div>
+</div><!-- /lesson-3 -->
+
+<!-- LESSON 4 -->
+<div id="lesson-4" class="lesson-pane">
+<div class="purchase-banner" style="background:linear-gradient(135deg,#1f618d,#2980b9);color:white;padding:20px;text-align:center;">
+  <div style="font-size:0.85rem;opacity:0.85;margin-bottom:4px">🔒 この内容は有料コンテンツです</div>
+  <div style="font-size:1.2rem;font-weight:700;margin-bottom:4px">第4課　注意をする・注意を受ける</div>
+  <div style="font-size:0.9rem;opacity:0.9;margin-bottom:16px">語彙・表現・談話・練習クイズを含む全コンテンツ</div>
+  <a href="https://buy.stripe.com/dRm4gz0wS9ok4HigLBaMU00" target="_blank"
+     style="display:inline-block;background:white;color:#1f618d;font-weight:700;font-size:1rem;
+            padding:12px 32px;border-radius:30px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.2)">
+    💳 ¥1,980 で購入する
+  </a>
+  <div style="font-size:0.75rem;opacity:0.75;margin-top:10px">Apple Pay・クレジットカード対応 / Powered by Stripe</div>
+</div>
+<div class="preview-notice" style="background:#ebf5fb;border-bottom:1px solid #d6eaf8;padding:10px 18px;font-size:0.82rem;color:#1f618d;text-align:center;">
+  👇 以下は無料プレビューです
+</div>
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('l4-vocab',this,'l4')">📚 ことば</button>
+  <button class="tab-btn" onclick="switchTab('l4-expr',this,'l4')">💬 表現</button>
+  <button class="tab-btn" onclick="switchTab('l4-dialogue',this,'l4')">🗣 談話</button>
+  <button class="tab-btn" onclick="switchTab('l4-practice',this,'l4')">🎯 練習</button>
+</div>
+<div id="pane-l4-vocab" class="pane active">
+  <div class="sub-controls">
+    <div class="filter-label">セクション</div>
+    <button class="sec-btn active" onclick="filterSection('l4-vocab','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l4-vocab','d1',this)">談話1</button>
+    <button class="sec-btn" onclick="filterSection('l4-vocab','d2',this)">談話2</button>
+    <button class="sec-btn" onclick="filterSection('l4-vocab','d3',this)">談話3</button>
+    <button class="sec-btn" onclick="filterSection('l4-vocab','k1',this)">会話1</button>
+    <button class="sec-btn" onclick="filterSection('l4-vocab','k2',this)">会話2</button>
+    <button class="sec-btn" onclick="filterSection('l4-vocab','r1',this)">練習1</button>
+  </div>
+  <div class="progress-wrap">
+    <span id="l4-prog-text">0 / 0 覚えた</span>
+    <div class="progress-bar"><div class="progress-fill" id="l4-prog-fill" style="width:0%"></div></div>
+    <span id="l4-prog-pct">0%</span>
+  </div>
+  <div id="l4-vocab-cards"></div>
+</div>
+<div id="pane-l4-expr" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">カテゴリー</div>
+    <button class="sec-btn active" onclick="filterSection('l4-expr','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l4-expr','warn',this)">注意をする</button>
+    <button class="sec-btn" onclick="filterSection('l4-expr','receive',this)">注意を受ける</button>
+  </div>
+  <div id="l4-expr-cards"></div>
+</div>
+<div id="pane-l4-dialogue" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">談話</div>
+    <button class="sec-btn active" onclick="filterSection('l4-dialogue','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l4-dialogue','d1',this)">談話1</button>
+    <button class="sec-btn" onclick="filterSection('l4-dialogue','d2',this)">談話2</button>
+    <button class="sec-btn" onclick="filterSection('l4-dialogue','d3',this)">談話3</button>
+  </div>
+  <div id="l4-dialogue-cards"></div>
+</div>
+<div id="pane-l4-practice" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">練習タイプ</div>
+    <button class="sec-btn active" onclick="setPracticeType('quiz','l4',this)">🎯 4択クイズ</button>
+    <button class="sec-btn" onclick="setPracticeType('sort','l4',this)">🔀 並べ替え</button>
+  </div>
+  <div class="practice-wrap" id="l4-practice-area"></div>
+</div>
+</div><!-- /lesson-4 -->
+
+<!-- LESSON 5 -->
+<div id="lesson-5" class="lesson-pane">
+<div class="purchase-banner" style="background:linear-gradient(135deg,#117a65,#1abc9c);color:white;padding:20px;text-align:center;">
+  <div style="font-size:0.85rem;opacity:0.85;margin-bottom:4px">🔒 この内容は有料コンテンツです</div>
+  <div style="font-size:1.2rem;font-weight:700;margin-bottom:4px">第5課　頼む・断る</div>
+  <div style="font-size:0.9rem;opacity:0.9;margin-bottom:16px">語彙・表現・談話・練習クイズを含む全コンテンツ</div>
+  <a href="https://buy.stripe.com/dRm4gz0wS9ok4HigLBaMU00" target="_blank"
+     style="display:inline-block;background:white;color:#117a65;font-weight:700;font-size:1rem;
+            padding:12px 32px;border-radius:30px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.2)">
+    💳 ¥1,980 で購入する
+  </a>
+  <div style="font-size:0.75rem;opacity:0.75;margin-top:10px">Apple Pay・クレジットカード対応 / Powered by Stripe</div>
+</div>
+<div class="preview-notice" style="background:#e8f8f5;border-bottom:1px solid #a9dfbf;padding:10px 18px;font-size:0.82rem;color:#117a65;text-align:center;">
+  👇 以下は無料プレビューです
+</div>
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('l5-vocab',this,'l5')">📚 ことば</button>
+  <button class="tab-btn" onclick="switchTab('l5-expr',this,'l5')">💬 表現</button>
+  <button class="tab-btn" onclick="switchTab('l5-dialogue',this,'l5')">🗣 談話</button>
+  <button class="tab-btn" onclick="switchTab('l5-practice',this,'l5')">🎯 練習</button>
+</div>
+<div id="pane-l5-vocab" class="pane active">
+  <div class="sub-controls">
+    <div class="filter-label">セクション</div>
+    <button class="sec-btn active" onclick="filterSection('l5-vocab','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l5-vocab','d1',this)">談話1</button>
+    <button class="sec-btn" onclick="filterSection('l5-vocab','d2',this)">談話2</button>
+    <button class="sec-btn" onclick="filterSection('l5-vocab','d3',this)">談話3</button>
+    <button class="sec-btn" onclick="filterSection('l5-vocab','d4',this)">談話4</button>
+    <button class="sec-btn" onclick="filterSection('l5-vocab','d5',this)">談話5</button>
+    <button class="sec-btn" onclick="filterSection('l5-vocab','r1',this)">練習1</button>
+  </div>
+  <div class="progress-wrap">
+    <span id="l5-prog-text">0 / 0 覚えた</span>
+    <div class="progress-bar"><div class="progress-fill" id="l5-prog-fill" style="width:0%"></div></div>
+    <span id="l5-prog-pct">0%</span>
+  </div>
+  <div id="l5-vocab-cards"></div>
+</div>
+<div id="pane-l5-expr" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">カテゴリー</div>
+    <button class="sec-btn active" onclick="filterSection('l5-expr','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l5-expr','request',this)">依頼する</button>
+    <button class="sec-btn" onclick="filterSection('l5-expr','refuse',this)">断る</button>
+  </div>
+  <div id="l5-expr-cards"></div>
+</div>
+<div id="pane-l5-dialogue" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">談話</div>
+    <button class="sec-btn active" onclick="filterSection('l5-dialogue','all',this)">すべて</button>
+    <button class="sec-btn" onclick="filterSection('l5-dialogue','d1',this)">談話1</button>
+    <button class="sec-btn" onclick="filterSection('l5-dialogue','d2',this)">談話2</button>
+    <button class="sec-btn" onclick="filterSection('l5-dialogue','d3',this)">談話3</button>
+  </div>
+  <div id="l5-dialogue-cards"></div>
+</div>
+<div id="pane-l5-practice" class="pane">
+  <div class="sub-controls">
+    <div class="filter-label">練習タイプ</div>
+    <button class="sec-btn active" onclick="setPracticeType('quiz','l5',this)">🎯 4択クイズ</button>
+    <button class="sec-btn" onclick="setPracticeType('sort','l5',this)">🔀 並べ替え</button>
+  </div>
+  <div class="practice-wrap" id="l5-practice-area"></div>
+</div>
+</div><!-- /lesson-5 -->
+
+<!-- Footer -->
+<footer>
+  <div class="supervisor">監修 <span>垰田直美　日本語講師</span></div>
+  <p>ビジネス日本語30時間 — インタラクティブ学習サイト</p>
+  <p style="margin-top:6px;font-size:0.76rem">🔊 音声はWeb Speech API使用 / Chrome・Edgeで最適に動作します</p>
+</footer>
+
+<script>
+// ════════════════════════════════════════
+// LESSON 1 DATA
+// ════════════════════════════════════════
+const L1 = {
+ vocabSections:[
+  {id:"d1",title:"談話1",words:[
+    {jp:"迷惑",rd:"めいわく",en:"trouble / inconvenience",zh:"麻烦",ko:"폐 / 민폐",vi:"phiền phức"},
+    {jp:"指導（する）",rd:"しどう",en:"guidance / to guide",zh:"指导",ko:"지도하다",vi:"hướng dẫn"},
+    {jp:"転勤（する）",rd:"てんきん",en:"job transfer",zh:"调动工作",ko:"전근하다",vi:"chuyển công tác"},
+    {jp:"研修",rd:"けんしゅう",en:"training program",zh:"研修/培训",ko:"연수",vi:"đào tạo"},
+    {jp:"配属",rd:"はいぞく",en:"assignment to a dept.",zh:"分配/调派",ko:"배속",vi:"phân công"},
+    {jp:"名字",rd:"みょうじ",en:"family name",zh:"姓氏",ko:"성（씨）",vi:"họ / tên họ"},
+    {jp:"担当（する）",rd:"たんとう",en:"in charge of",zh:"负责/主管",ko:"담당하다",vi:"phụ trách"},
+    {jp:"プロジェクト",rd:"—",en:"project",zh:"项目",ko:"프로젝트",vi:"dự án"},
+    {jp:"チーム",rd:"—",en:"team",zh:"团队",ko:"팀",vi:"nhóm"},
+    {jp:"加わる",rd:"くわわる",en:"to join",zh:"加入",ko:"합류하다",vi:"tham gia"},
+    {jp:"成績",rd:"せいせき",en:"results / performance",zh:"成绩/业绩",ko:"성적",vi:"kết quả"},
+    {jp:"わが社",rd:"わがしゃ",en:"our company",zh:"我公司",ko:"우리 회사",vi:"công ty chúng tôi"},
+    {jp:"合格（する）",rd:"ごうかく",en:"to pass (an exam)",zh:"合格",ko:"합격하다",vi:"đạt / vượt qua"},
+    {jp:"とんでもないです",rd:"—",en:"not at all",zh:"哪里哪里",ko:"천만에요",vi:"không dám"},
+    {jp:"〜勤め",rd:"〜づとめ",en:"working at ~",zh:"在～工作",ko:"～근무",vi:"làm việc tại ~"},
+    {jp:"戸惑う",rd:"とまどう",en:"to be confused",zh:"困惑",ko:"당황하다",vi:"bối rối"},
+  ]},
+  {id:"d2",title:"談話2",words:[
+    {jp:"世話",rd:"せわ",en:"care / help",zh:"照顾",ko:"신세/도움",vi:"sự chăm sóc"},
+    {jp:"新製品",rd:"しんせいひん",en:"new product",zh:"新产品",ko:"신제품",vi:"sản phẩm mới"},
+    {jp:"企画",rd:"きかく",en:"planning",zh:"策划",ko:"기획",vi:"kế hoạch"},
+    {jp:"地区",rd:"ちく",en:"area / district",zh:"地区",ko:"지구/지역",vi:"khu vực"},
+    {jp:"市場調査",rd:"しじょうちょうさ",en:"market research",zh:"市场调查",ko:"시장 조사",vi:"nghiên cứu thị trường"},
+  ]},
+  {id:"d3",title:"談話3",words:[
+    {jp:"助ける",rd:"たすける",en:"to help",zh:"帮助",ko:"돕다",vi:"giúp đỡ"},
+    {jp:"引き立てる",rd:"ひきたてる",en:"to support / to promote",zh:"提携/关照",ko:"밀어주다",vi:"nâng đỡ"},
+    {jp:"貴重",rd:"きちょう",en:"valuable",zh:"宝贵",ko:"귀중한",vi:"quý giá"},
+    {jp:"情報",rd:"じょうほう",en:"information",zh:"信息",ko:"정보",vi:"thông tin"},
+    {jp:"申し訳ない",rd:"もうしわけない",en:"terribly sorry",zh:"非常抱歉",ko:"정말 죄송하다",vi:"thực sự xin lỗi"},
+    {jp:"アドバイス",rd:"—",en:"advice",zh:"建议",ko:"조언",vi:"lời khuyên"},
+  ]},
+  {id:"k12",title:"会話1・2",words:[
+    {jp:"入社（する）",rd:"にゅうしゃ",en:"to join a company",zh:"入职",ko:"입사하다",vi:"gia nhập công ty"},
+    {jp:"この度",rd:"このたび",en:"this time / on this occasion",zh:"这次/此次",ko:"이번에",vi:"lần này"},
+    {jp:"優秀",rd:"ゆうしゅう",en:"excellent",zh:"优秀",ko:"우수한",vi:"xuất sắc"},
+    {jp:"後任",rd:"こうにん",en:"successor",zh:"继任者",ko:"후임자",vi:"người kế nhiệm"},
+    {jp:"恐れ入ります",rd:"おそれいります",en:"I'm honored",zh:"您太客气了",ko:"황송합니다",vi:"thật vinh dự"},
+    {jp:"名刺",rd:"めいし",en:"business card",zh:"名片",ko:"명함",vi:"danh thiếp"},
+    {jp:"精いっぱい",rd:"せいいっぱい",en:"with all one's effort",zh:"尽全力",ko:"최선을 다하여",vi:"hết sức"},
+  ]},
+  {id:"k3",title:"会話3",words:[
+    {jp:"うち",rd:"—",en:"our company [informal]",zh:"我们（公司）",ko:"우리 [비공식]",vi:"chúng tôi"},
+    {jp:"半年",rd:"はんとし",en:"half a year",zh:"半年",ko:"반년",vi:"nửa năm"},
+    {jp:"今後とも",rd:"こんごとも",en:"from now on as well",zh:"今后也请多关照",ko:"앞으로도 잘 부탁드립니다",vi:"mong được tiếp tục nhờ cậy"},
+  ]},
+  {id:"r1",title:"練習1",words:[
+    {jp:"敬語",rd:"けいご",en:"honorific language",zh:"敬语",ko:"경어",vi:"kính ngữ"},
+    {jp:"失礼ですが",rd:"しつれいですが",en:"excuse me, but...",zh:"打扰一下",ko:"실례지만",vi:"xin lỗi, nhưng..."},
+    {jp:"訪問（する）",rd:"ほうもん",en:"to visit",zh:"拜访",ko:"방문하다",vi:"thăm"},
+    {jp:"書類",rd:"しょるい",en:"documents",zh:"文件",ko:"서류",vi:"tài liệu"},
+  ]},
+ ],
+ exprSections:[
+  {id:"self",title:"① 自己紹介する — Introducing yourself",exprs:[
+    {jp:"〔名前〕と申します。",en:"My name is [name].",zh:"我叫〔姓名〕。",ko:"저는 〔이름〕이라고 합니다.",vi:"Tôi tên là〔tên〕."},
+    {jp:"〔名前〕でございます。",en:"I am [name]. (very formal)",zh:"我是〔姓名〕。",ko:"〔이름〕입니다.",vi:"Tôi là〔tên〕."},
+    {jp:"〜（こと）になりました。",en:"I have been assigned to ~.",zh:"我将～ / 我被调到～。",ko:"～하게 되었습니다.",vi:"Tôi được phân công ~."},
+    {jp:"よろしくご指導ください。",en:"I look forward to your guidance.",zh:"请多多指教。",ko:"잘 부탁드립니다.",vi:"Mong được chỉ bảo."},
+  ]},
+  {id:"greet",title:"② 他社の人にあいさつする — Greeting",exprs:[
+    {jp:"お世話になっております。",en:"Thank you for your continued support.",zh:"承蒙关照。",ko:"신세를 지고 있습니다.",vi:"Cảm ơn vì sự quan tâm."},
+  ]},
+  {id:"intro",title:"③ ほかの人を紹介する — Introducing someone",exprs:[
+    {jp:"〔自社の人〕でございます。",en:"This is [name] from our company.",zh:"这位是我们公司的〔姓名〕。",ko:"저희 회사의 〔이름〕입니다.",vi:"Đây là〔tên〕của công ty chúng tôi."},
+    {jp:"〔他社の人〕様でいらっしゃいます。",en:"This is Mr./Ms. [name] from [company].",zh:"这位是〔公司〕的〔姓名〕。",ko:"이쪽은 〔이름〕 님이십니다.",vi:"Đây là ông/bà〔tên〕."},
+  ]},
+ ],
+ dialogueSections:[
+  {id:"d1",title:"談話1 — Self-introduction (自己紹介する)",
+   sub1:["①大阪から転勤","①こちらで6か月間研修","①今日から営業3課に配属"],
+   sub2:["②いろいろお伺いする","②日本語を間違える"],
+   lines:[
+    {sp:"A",ja:"①今日から営業3課で働くことになりましたリビングストンと申します。",en:"My name is Livingston. ①Starting today I will work in Sales, Sec.3.",zh:"我叫利文斯顿，①从今天起将在营业3科工作。",ko:"저는 리빙스턴입니다. ①오늘부터 영업 3과에서 근무하게 되었습니다.",vi:"Tên tôi là Livingston. ①Từ hôm nay tôi làm việc tại Phòng Kinh doanh 3."},
+    {sp:"B",ja:"川田です。よろしくお願いいたします。",en:"I'm Kawada. Pleased to meet you.",zh:"我是川田，请多关照。",ko:"저는 카와다입니다. 잘 부탁드립니다.",vi:"Tôi là Kawada. Rất vui được gặp bạn."},
+    {sp:"A",ja:"②ご迷惑をおかけすることもあるかと思いますが、よろしくご指導ください。",en:"I know ②I may cause trouble, but I hope you'll guide me.",zh:"②可能会给您添麻烦，还请多多指教。",ko:"②폐를 끼칠 수도 있겠지만, 잘 부탁드립니다.",vi:"Tôi biết ②có thể gây phiền phức, nhưng mong được chỉ bảo."},
+   ]},
+  {id:"d2",title:"談話2 — Longer self-introduction",sub1:["①今日から営業3課に配属","①今度、営業担当"],sub2:[],
+   lines:[
+    {sp:"A",ja:"今日からこちらで研修を受けることになったリビングストンです。イギリスから参りました。どうぞよろしくお願いいたします。リビングストンは名字ですが、言いにくいかたはダニーと呼んでください。",en:"My name is Livingston. I will be training here from today. I came from the UK. Please feel free to call me Danny.",zh:"我是利文斯顿，从今天起在这里接受研修。我来自英国。利文斯顿是我的姓，不好发音的话请叫我丹尼。",ko:"오늘부터 이곳에서 연수를 받게 된 리빙스턴입니다. 영국에서 왔습니다. 발음이 어려우신 분은 대니라고 불러 주세요.",vi:"Tôi là Livingston, từ hôm nay tôi sẽ tập huấn tại đây. Tôi đến từ Anh. Nếu khó phát âm hãy gọi tôi là Danny."},
+   ]},
+  {id:"d3",title:"談話3 — Greeting from another company",
+   sub1:["①新製品の企画を担当する","①この地区を担当"],sub2:["②開発部","②経理部"],
+   lines:[
+    {sp:"A",ja:"①御社を担当させていただきますオリエンタル商事のリビングストンでございます。どうぞよろしくお願いいたします。",en:"I am Livingston from Oriental Trading. ①I am in charge of your account.",zh:"我是东方商事的利文斯顿，①负责贵公司业务，请多关照。",ko:"저는 오리엔탈 상사의 리빙스턴입니다. ①귀사를 담당하게 되었습니다.",vi:"Tôi là Livingston từ Oriental Trading. ①Tôi phụ trách tài khoản của quý công ty."},
+    {sp:"B",ja:"あ、リビングストンさんですか。いつもお世話になっております。②営業部の木村でございます。こちらこそどうぞよろしく。",en:"Ah, Mr. Livingston. Thank you always. I am Kimura from ②Sales Dept.",zh:"啊，利文斯顿先生，一直承蒙关照。我是②营业部的木村。",ko:"아, 리빙스턴 씨군요. 항상 신세를 지고 있습니다. 저는 ②영업부의 기무라입니다.",vi:"À, anh Livingston. Tôi là Kimura từ ②Phòng Kinh doanh."},
+   ]},
+  {id:"d4",title:"談話4 — Introducing a colleague",
+   sub1:["①いつもチンにご指導いただきありがとうございます","①いつもお引き立ていただきありがとうございます"],
+   sub2:["②いろいろ助ける","②いつも貴重な情報を教える"],
+   lines:[
+    {sp:"A",ja:"こちらは弊社の営業部部長の長井でございます。部長、こちらは開発部部長の江藤様でいらっしゃいます。",en:"This is Nagai, our Sales Manager. This is Mr./Ms. Eto, Dev. Dept. Head.",zh:"这位是我们公司营业部部长长井。这位是开发部部长江藤先生/女士。",ko:"이쪽은 저희 회사 영업부 부장 나가이입니다. 이쪽은 개발부 부장 에토 님이십니다.",vi:"Đây là Nagai, Trưởng phòng Kinh doanh. Đây là ông/bà Eto, Trưởng phòng Phát triển."},
+    {sp:"B",ja:"はじめまして。長井と申します。①いつもチンがいろいろとお世話になっております。",en:"How do you do, I'm Nagai. ①Chen has always been a great help to us.",zh:"初次见面，我叫长井。①陈先生一直受您多方关照。",ko:"처음 뵙겠습니다. 나가이라고 합니다. ①항상 첸이 여러모로 신세를 지고 있습니다.",vi:"Hân hạnh được gặp. Tôi là Nagai. ①Anh Chen luôn được quan tâm giúp đỡ nhiều."},
+    {sp:"C",ja:"いえ、こちらこそ。チンさんには②よくやっていただいております。",en:"Not at all. Chen has ②always done so much for us.",zh:"哪里，我们也②承蒙陈先生多方帮助。",ko:"아니요, 저야말로. 첸 씨에게는 ②많은 도움을 받고 있습니다.",vi:"Không có gì. Anh Chen ②cũng đã giúp đỡ chúng tôi rất nhiều."},
+   ]},
+ ],
+ scenarios:[
+  {id:"s1",title:"シナリオ1：初めての配属先であいさつ",
+   ill:{bg:"linear-gradient(180deg,#eaf4fb,#d6eaf8)",desc:"新しい部署に初めて出勤しました。",descEn:"You arrive at your new department for the first time.",
+     people:[{body:"suit-blue",hasFemale:false,bowing:true,label:"あなた"},{body:"suit-dark",hasFemale:false,bowing:false,label:"同僚"}]},
+   quiz:[
+    {q:"どんなあいさつをしますか？",qEn:"What greeting do you say?",
+     choices:["今日から営業3課で働くことになりましたリビングストンと申します。","お世話になっております。","はじめまして、どうぞよろしく！","ちょっとすみません。"],
+     correct:0,explain:"初めての職場では「〜と申します」「よろしくご指導ください」を使います。",explainEn:"Use '〜と申します' and 'よろしくご指導ください' when meeting colleagues for the first time."},
+    {q:"続けてどう言いますか？",qEn:"What do you say next?",
+     choices:["よろしくご指導ください。","どうぞよろしく！","じゃあ、またね。","ちょっと待ってください。"],
+     correct:0,explain:"「よろしくご指導ください」は新しい職場での定番フレーズです。",explainEn:"'よろしくご指導ください' is a standard phrase when starting at a new workplace."},
+    {q:"相手が「川田です」と言ったら？",qEn:"When the colleague says 'I'm Kawada', how do you respond?",
+     choices:["よろしくお願いいたします。","知っています。","そうですか。","もう一度言ってください。"],
+     correct:0,explain:"「よろしくお願いいたします」はビジネスの場面で必須です。",explainEn:"'よろしくお願いいたします' is essential in business settings."},
+   ],
+   sort:[{instruction:"正しい順番に並べ替えてください",instructionEn:"Put the words in the correct order",
+     parts:["営業3課で","今日から","リビングストンと申します。","働くことになりました"],
+     answer:[1,0,3,2],correct:"今日から営業3課で働くことになりましたリビングストンと申します。"}]
+  },
+  {id:"s2",title:"シナリオ2：他社の人に初めて会った時",
+   ill:{bg:"linear-gradient(180deg,#f5eef8,#e8d5f5)",desc:"取引先の担当者に初めてあいさつします。",descEn:"You greet your contact at a client company for the first time.",
+     people:[{body:"suit-blue",hasFemale:false,bowing:true,label:"あなた"},{body:"suit-dark",hasFemale:true,bowing:true,label:"取引先"}]},
+   quiz:[
+    {q:"他社の担当者へのあいさつは？",qEn:"What do you say when greeting a client contact?",
+     choices:["御社を担当させていただきますオリエンタル商事のリビングストンでございます。","こんにちは、リビングストンです。","はじめまして！よろしく！","お世話さまです。"],
+     correct:0,explain:"「御社を担当させていただきます」「〜でございます」と丁寧に自己紹介します。",explainEn:"Use '御社を担当させていただきます' and '〜でございます' for polite introductions."},
+    {q:"相手が「お世話になっております」と言ったら？",qEn:"How do you respond to 'thank you for your continued support'?",
+     choices:["こちらこそ、お世話になっております。","どういたしまして。","いいえ、大丈夫です。","ありがとうございます。"],
+     correct:0,explain:"「お世話になっております」には「こちらこそ」と返すのが自然です。",explainEn:"The natural response is 'こちらこそ、お世話になっております'."},
+   ],
+   sort:[{instruction:"正しい順番に並べ替えてください",instructionEn:"Put the words in the correct order",
+     parts:["オリエンタル商事の","させていただきます","御社を担当","リビングストンでございます。"],
+     answer:[2,0,3],correct:"御社を担当させていただきますオリエンタル商事のリビングストンでございます。"}]
+  },
+ ]
+};
+
+// ════════════════════════════════════════
+// LESSON 2 DATA
+// ════════════════════════════════════════
+const L2 = {
+ vocabSections:[
+  {id:"d1",title:"談話1 — 休んだり早退したりした時",words:[
+    {jp:"早退（する）",rd:"そうたい",en:"early leaving / to leave early",zh:"早退",ko:"조기 퇴근하다",vi:"về sớm"},
+    {jp:"遅刻（する）",rd:"ちこく",en:"to be late",zh:"迟到",ko:"지각하다",vi:"đến trễ"},
+    {jp:"帰国（する）",rd:"きこく",en:"to return to one's country",zh:"回国",ko:"귀국하다",vi:"về nước"},
+    {jp:"結婚式",rd:"けっこんしき",en:"wedding ceremony",zh:"婚礼",ko:"결혼식",vi:"lễ cưới"},
+    {jp:"無事",rd:"ぶじ",en:"safely / without incident",zh:"平安/顺利",ko:"무사히",vi:"bình an / không có vấn đề"},
+    {jp:"おかげさま",rd:"—",en:"thanks to you / fortunately",zh:"托您的福",ko:"덕분에",vi:"nhờ ơn / may mắn"},
+  ]},
+  {id:"d2",title:"談話2 — 久しぶりに会った時",words:[
+    {jp:"ごぶさた",rd:"—",en:"long time no see (formal)",zh:"久未联系",ko:"오랫동안 연락 못 드렸습니다",vi:"lâu rồi không gặp"},
+    {jp:"なんとか",rd:"—",en:"somehow / managing",zh:"还好/勉强",ko:"어떻게든/그럭저럭",vi:"cũng ổn / tạm được"},
+  ]},
+  {id:"d3",title:"談話3 — お祝い",words:[
+    {jp:"誕生",rd:"たんじょう",en:"birth / birthday",zh:"诞生/生日",ko:"탄생/생일",vi:"sinh / sinh nhật"},
+    {jp:"栄転",rd:"えいてん",en:"promotion with transfer",zh:"荣调/晋升",ko:"영전",vi:"thăng chức (kèm chuyển công tác)"},
+    {jp:"昇進",rd:"しょうしん",en:"promotion",zh:"晋升",ko:"승진",vi:"thăng chức"},
+  ]},
+  {id:"d4",title:"談話4 — 会社を辞めたり転勤したりする時",words:[
+    {jp:"辞める",rd:"やめる",en:"to quit / to resign",zh:"辞职",ko:"그만두다/사직하다",vi:"nghỉ việc"},
+    {jp:"退職（する）",rd:"たいしょく",en:"to retire / to resign",zh:"退职/离职",ko:"퇴직하다",vi:"nghỉ hưu / thôi việc"},
+    {jp:"異動（する）",rd:"いどう",en:"to be transferred (within company)",zh:"调动",ko:"이동하다",vi:"điều chuyển (nội bộ)"},
+  ]},
+  {id:"k1",title:"会話1 — 風邪で会社を休んだ時",words:[
+    {jp:"インフルエンザ",rd:"—",en:"influenza / flu",zh:"流感",ko:"인플루엔자",vi:"cúm"},
+    {jp:"お腹にくる",rd:"おなかにくる",en:"to hit the stomach / upset stomach",zh:"肚子（受到影响）",ko:"배에 오다",vi:"ảnh hưởng đến bụng"},
+    {jp:"ひどい目にあう",rd:"ひどいめにあう",en:"to have a terrible time",zh:"倒霉/受苦",ko:"고생하다/수난당하다",vi:"gặp khó khăn / khốn đốn"},
+    {jp:"バリバリやる",rd:"—",en:"to work hard / go full speed",zh:"全力以赴",ko:"열심히 하다",vi:"làm việc hết sức"},
+    {jp:"たまる",rd:"—",en:"to pile up / to accumulate",zh:"积压/堆积",ko:"쌓이다",vi:"tích tụ / dồn lại"},
+  ]},
+  {id:"k2",title:"会話2",words:[
+    {jp:"時期",rd:"じき",en:"time / period / season",zh:"时期",ko:"시기",vi:"thời kỳ / giai đoạn"},
+    {jp:"察する",rd:"さっする",en:"to sense / to understand",zh:"体察/感知",ko:"눈치채다/헤아리다",vi:"nhận ra / thấu hiểu"},
+    {jp:"ひとつよろしく頼みます",rd:"ひとつよろしくたのみます",en:"please take good care of things",zh:"请多关照",ko:"잘 부탁합니다",vi:"mong được nhờ cậy"},
+  ]},
+  {id:"k3",title:"会話3",words:[
+    {jp:"まる〜年",rd:"まる〜ねん",en:"full ~ years",zh:"整～年",ko:"꼭 ～년",vi:"đúng ~ năm"},
+    {jp:"気をつける",rd:"きをつける",en:"to be careful / take care",zh:"小心/注意",ko:"조심하다",vi:"cẩn thận / giữ gìn"},
+  ]},
+  {id:"r1",title:"練習1",words:[
+    {jp:"予算",rd:"よさん",en:"budget",zh:"预算",ko:"예산",vi:"ngân sách"},
+    {jp:"ずいぶん",rd:"—",en:"quite / considerably",zh:"相当/挺",ko:"상당히/꽤",vi:"khá / đáng kể"},
+    {jp:"大学院",rd:"だいがくいん",en:"graduate school",zh:"研究生院",ko:"대학원",vi:"trường cao học"},
+    {jp:"大した",rd:"たいした",en:"remarkable / considerable",zh:"了不起的",ko:"대단한",vi:"đáng kể / xuất sắc"},
+    {jp:"体がつづく",rd:"からだがつづく",en:"to be physically able to continue",zh:"身体能够坚持",ko:"몸이 버티다",vi:"sức khỏe cho phép tiếp tục"},
+  ]},
+  {id:"r2",title:"練習2",words:[
+    {jp:"来店",rd:"らいてん",en:"visiting a store/restaurant",zh:"光临本店",ko:"내방/방문",vi:"đến cửa hàng"},
+    {jp:"飲み屋",rd:"のみや",en:"bar / drinking place",zh:"酒馆",ko:"술집",vi:"quán nhậu / quán rượu"},
+    {jp:"急",rd:"きゅう",en:"sudden / urgent",zh:"急/突然",ko:"급한/갑작스러운",vi:"cấp bách / đột ngột"},
+    {jp:"家賃",rd:"やちん",en:"rent",zh:"房租",ko:"집세",vi:"tiền thuê nhà"},
+    {jp:"値段",rd:"ねだん",en:"price",zh:"价格",ko:"가격/값",vi:"giá cả"},
+  ]},
+ ],
+ exprSections:[
+  {id:"apology",title:"謝罪 — Early leave / lateness / absence",exprs:[
+    {jp:"〜て申し訳ありませんでした。",en:"I'm very sorry for ~.",zh:"非常抱歉〜。",ko:"〜해서 정말 죄송했습니다.",vi:"Tôi thực sự xin lỗi vì đã ~."},
+    {jp:"忙しい時に3日も休んでしまって申し訳ありませんでした。",en:"I'm so sorry for taking 3 days off during such a busy time.",zh:"在百忙之中休息了3天，非常抱歉。",ko:"바쁜 시기에 3일이나 쉬어서 정말 죄송했습니다.",vi:"Tôi rất xin lỗi vì đã nghỉ 3 ngày vào lúc bận rộn như vậy."},
+    {jp:"遅くなって申し訳ありませんでした。",en:"I'm sorry for being late.",zh:"迟到了，非常抱歉。",ko:"늦어서 정말 죄송했습니다.",vi:"Tôi xin lỗi vì đã đến muộn."},
+  ]},
+  {id:"reunion",title:"久しぶりに会う — Meeting after a long time",exprs:[
+    {jp:"ごぶさたしております。",en:"I'm sorry I haven't been in touch.",zh:"久未联系，非常失礼。",ko:"오랫동안 연락 드리지 못했습니다.",vi:"Xin lỗi vì lâu rồi không liên lạc."},
+    {jp:"お久しぶりでございます。",en:"It's been a long time. (formal)",zh:"好久不见。（正式）",ko:"오랜만입니다.（격식체）",vi:"Lâu rồi không gặp. (trang trọng)"},
+    {jp:"お変わりございませんか。",en:"How have you been? / No changes?",zh:"您一切都好吗？",ko:"별고 없으셨습니까？",vi:"Bạn có khỏe không? Có gì thay đổi không?"},
+  ]},
+  {id:"congrats",title:"お祝い — Congratulations",exprs:[
+    {jp:"お／ご〜おめでとうございます。",en:"Congratulations on your ~.",zh:"恭喜您〜。",ko:"〜을/를 축하드립니다.",vi:"Xin chúc mừng ~ của bạn."},
+    {jp:"ご栄転おめでとうございます。",en:"Congratulations on your promotion.",zh:"恭喜您荣调。",ko:"영전을 축하드립니다.",vi:"Xin chúc mừng việc thăng chức của bạn."},
+    {jp:"ご昇進おめでとうございます。",en:"Congratulations on your promotion.",zh:"恭喜您晋升。",ko:"승진을 축하드립니다.",vi:"Xin chúc mừng bạn được thăng chức."},
+  ]},
+  {id:"farewell",title:"退職・転勤・帰国 — Farewell greetings",exprs:[
+    {jp:"いろいろお世話になりました。",en:"Thank you for everything.",zh:"承蒙多方关照。",ko:"여러모로 신세를 많이 졌습니다.",vi:"Cảm ơn về tất cả mọi thứ."},
+  ]},
+  {id:"other",title:"その他 — Other expressions",exprs:[
+    {jp:"このたびは、ご愁傷様でございました。",en:"I'm so sorry for your loss.",zh:"对您的丧失深感遗憾。",ko:"이번에는 삼가 조의를 표합니다.",vi:"Tôi vô cùng thành kính chia buồn."},
+    {jp:"その節は、ごていねいにありがとうございました。",en:"Thank you for your kindness on that occasion.",zh:"那时您的关照，感谢不尽。",ko:"그때는 정성껏 대해 주셔서 감사했습니다.",vi:"Cảm ơn vì sự quan tâm của bạn vào dịp đó."},
+    {jp:"どうぞよいお年をお迎えください。",en:"Please have a happy New Year.",zh:"祝您新年快乐。",ko:"좋은 새해를 맞이하시길 바랍니다.",vi:"Chúc bạn đón năm mới vui vẻ."},
+    {jp:"あけましておめでとうございます。",en:"Happy New Year!",zh:"新年快乐！",ko:"새해 복 많이 받으세요.",vi:"Chúc mừng năm mới!"},
+    {jp:"今年もよろしくお願いいたします。",en:"I look forward to your continued support this year.",zh:"今年也请多关照。",ko:"올해도 잘 부탁드립니다.",vi:"Mong được tiếp tục nhờ cậy trong năm nay."},
+  ]},
+ ],
+ dialogueSections:[
+  {id:"d1",title:"談話1 — 休んだり早退したりした時",
+   sub1:["①忙しい時に3日も休んだ","①きのうは早退した","①2週間も夏休みをいただいた","①10日も帰国した"],
+   sub2:["②すっかりよくなりました","②元気になりました","③妹の結婚式も無事終わりました"],
+   lines:[
+    {sp:"A",ja:"①忙しい時に3日も休んでしまって申し訳ありませんでした。",en:"I'm so sorry for taking 3 days off ①during such a busy time.",zh:"①在百忙之中休息了3天，非常抱歉。",ko:"①바쁜 시기에 3일이나 쉬어서 정말 죄송했습니다.",vi:"Tôi rất xin lỗi vì đã nghỉ 3 ngày ①vào lúc bận rộn."},
+    {sp:"B",ja:"あ、アランさん、ゆっくりできましたか。",en:"Ah, Alan, were you able to rest well?",zh:"啊，阿兰，好好休息了吗？",ko:"아, 아란 씨, 푹 쉬었나요？",vi:"À, Alan, bạn có nghỉ ngơi tốt không?"},
+    {sp:"A",ja:"ええ、おかげさまで②すっかりよくなりました。",en:"Yes, ②I'm completely better now, thanks.",zh:"是的，②托您的福，完全好了。",ko:"네, 덕분에 ②완전히 나았습니다.",vi:"Vâng, ②tôi đã hoàn toàn khỏe lại rồi, cảm ơn."},
+   ]},
+  {id:"d2",title:"談話2 — 久しぶりに会った時",
+   sub1:["①ごぶさたしております","①お久しぶりでございます","①お変わりございませんか","①しばらくでございます"],
+   sub2:["②こちらこそ","②お久しぶりです","②おかげさまで","②あ、しばらくです"],
+   lines:[
+    {sp:"A",ja:"吉田さん、①ごぶさたしております。",en:"Yoshida-san, ①it's been a long time.",zh:"吉田先生，①久未联系，非常失礼。",ko:"요시다 씨, ①오랫동안 연락 드리지 못했습니다.",vi:"Chị Yoshida, ①lâu rồi không liên lạc xin lỗi."},
+    {sp:"B",ja:"②こちらこそ。最近はいかがですか。",en:"②Likewise. How have you been lately?",zh:"②我也是。最近怎么样？",ko:"②저야말로요. 요즘은 어떠세요?",vi:"②Tôi cũng vậy. Dạo này bạn thế nào?"},
+    {sp:"A",ja:"ええ、なんとか。",en:"Well, I'm managing.",zh:"还好，勉强撑着。",ko:"네, 어떻게든 지내고 있어요.",vi:"Vâng, cũng tạm được."},
+   ]},
+  {id:"d3",title:"談話3 — お祝いを言う",
+   sub1:["②お子さんのお誕生","②ご栄転","②ご昇進","②お嬢さんのご入学"],
+   sub2:["③吉田さんによく似ていらっしゃる","③アメリカへ行く","③部長になる","③東京大学に入った"],
+   lines:[
+    {sp:"A",ja:"①吉田さん、②お子さんのお誕生おめでとうございます。",en:"①Yoshida-san, congratulations on ②the birth of your child!",zh:"①吉田先生，恭喜您②喜得贵子！",ko:"①요시다 씨, ②아이의 탄생을 축하드립니다.",vi:"①Chị Yoshida, xin chúc mừng ②sự ra đời của con!"},
+    {sp:"B",ja:"ありがとうございます。",en:"Thank you very much.",zh:"非常感谢。",ko:"감사합니다.",vi:"Xin cảm ơn rất nhiều."},
+    {sp:"A",ja:"③吉田さんによく似ていらっしゃるそうですね。本当におめでとうございます。",en:"I heard ③the baby looks just like you. Hearty congratulations!",zh:"听说③和吉田先生很像呢。真心地恭喜您。",ko:"③요시다 씨를 많이 닮으셨다고 하더군요. 정말 축하드립니다.",vi:"Nghe nói ③rất giống chị. Chúc mừng chân thành nhất!"},
+   ]},
+  {id:"d4",title:"談話4 — 会社を辞めたり転勤したりする時",
+   sub1:["帰国する","退職する","大阪に転勤する","営業2課に異動する"],
+   sub2:[],
+   lines:[
+    {sp:"A",ja:"山田さん、来月帰国することになりました。3年間、いろいろお世話になりました。",en:"Yamada-san, I will be returning home next month. Thank you for everything over the past 3 years.",zh:"山田先生，下个月我将回国。这3年来，承蒙多方关照。",ko:"야마다 씨, 다음 달에 귀국하게 되었습니다. 3년간 여러모로 신세를 졌습니다.",vi:"Anh Yamada, tháng tới tôi sẽ về nước. Cảm ơn anh vì tất cả trong 3 năm qua."},
+    {sp:"B",ja:"もう3年ですか。早いものですね。",en:"Already 3 years? Time flies.",zh:"已经3年了？真是时间飞逝啊。",ko:"벌써 3년이 됐군요. 빠른 것 같습니다.",vi:"Đã 3 năm rồi sao? Thời gian trôi nhanh quá."},
+    {sp:"A",ja:"山田さんには本当にお世話になりました。",en:"You've truly been a great help to me.",zh:"真的非常感谢山田先生的关照。",ko:"야마다 씨에게는 정말 많은 도움을 받았습니다.",vi:"Anh Yamada đã thực sự là người hỗ trợ tôi rất nhiều."},
+    {sp:"B",ja:"いいえ、こちらこそ。",en:"Not at all. It was my pleasure.",zh:"哪里，我才应该感谢您。",ko:"아니요, 저야말로요.",vi:"Không có gì. Tôi mới phải cảm ơn anh."},
+   ]},
+ ],
+ scenarios:[
+  {id:"s1",title:"シナリオ1：休んだ後の謝罪",
+   ill:{bg:"linear-gradient(180deg,#eafaf1,#d5f5e3)",desc:"3日間休んだ後、職場に戻ってきました。",descEn:"You have returned after being absent for 3 days.",
+     people:[{body:"suit-blue",hasFemale:false,bowing:true,label:"あなた"},{body:"suit-dark",hasFemale:false,bowing:false,label:"上司"}]},
+   quiz:[
+    {q:"上司に何と言いますか？",qEn:"What do you say to your supervisor?",
+     choices:["忙しい時に3日も休んでしまって申し訳ありませんでした。","ただいま戻りました！","休みをありがとうございます。","体の具合が悪かったです。"],
+     correct:0,explain:"「〜て申し訳ありませんでした」は謝罪の定番フレーズです。",explainEn:"'〜て申し訳ありませんでした' is the standard apology phrase."},
+    {q:"「もういいの？」と言われたら？",qEn:"When asked 'Are you better now?', how do you respond?",
+     choices:["ええ、おかげさまですっかりよくなりました。","はい、大丈夫です。","元気です！","ありがとうございました。"],
+     correct:0,explain:"「おかげさまで」を使うと相手への感謝と謙虚さが表れます。",explainEn:"Using 'おかげさまで' expresses gratitude and humility to the other person."},
+   ],
+   sort:[{instruction:"正しい順番に並べ替えてください",instructionEn:"Put the words in the correct order",
+     parts:["申し訳ありませんでした。","忙しい時に","3日も休んでしまって"],
+     answer:[1,2,0],correct:"忙しい時に3日も休んでしまって申し訳ありませんでした。"}]
+  },
+  {id:"s2",title:"シナリオ2：久しぶりに会った時",
+   ill:{bg:"linear-gradient(180deg,#fef9e7,#fdebd0)",desc:"しばらく会っていなかったビジネスの知り合いに偶然会いました。",descEn:"You unexpectedly meet a business acquaintance you haven't seen in a while.",
+     people:[{body:"suit-gray",hasFemale:false,bowing:true,label:"あなた"},{body:"suit-dark",hasFemale:true,bowing:true,label:"知人"}]},
+   quiz:[
+    {q:"久しぶりに会った時の一言は？",qEn:"What do you say when meeting someone after a long time?",
+     choices:["ごぶさたしております。","お世話になっております。","はじめまして。","こんにちは。"],
+     correct:0,explain:"「ごぶさたしております」は久しぶりに会う時の丁寧な表現です。",explainEn:"'ごぶさたしております' is the polite expression for meeting someone after a long time."},
+    {q:"「最近はいかがですか」と聞かれたら？",qEn:"When asked 'How have you been lately?', how do you respond?",
+     choices:["ええ、なんとかやっております。","いいえ、元気ではありません。","まあまあです。","忙しいです。"],
+     correct:0,explain:"「なんとかやっております」は謙虚でビジネスらしい返答です。",explainEn:"'なんとかやっております' is a modest, businesslike response."},
+   ],
+   sort:[{instruction:"正しい順番に並べ替えてください",instructionEn:"Put the words in the correct order",
+     parts:["ごぶさたしております。","吉田さん、"],
+     answer:[1,0],correct:"吉田さん、ごぶさたしております。"}]
+  },
+  {id:"s3",title:"シナリオ3：同僚の昇進をお祝いする",
+   ill:{bg:"linear-gradient(180deg,#ebf5fb,#d6eaf8)",desc:"同僚が昇進しました。お祝いを言います。",descEn:"Your colleague has been promoted. You offer congratulations.",
+     people:[{body:"blouse",hasFemale:true,bowing:false,label:"あなた"},{body:"suit-blue",hasFemale:false,bowing:false,label:"同僚"}]},
+   quiz:[
+    {q:"昇進したことへのお祝いは？",qEn:"How do you congratulate someone on their promotion?",
+     choices:["ご昇進おめでとうございます。","おめでとう！","昇進しましたね。","よかったですね。"],
+     correct:0,explain:"「ご昇進おめでとうございます」がビジネスで使う丁寧な表現です。",explainEn:"'ご昇進おめでとうございます' is the polite congratulatory expression used in business."},
+    {q:"栄転（転勤を伴う昇進）へのお祝いは？",qEn:"How do you congratulate someone on a promotion with transfer?",
+     choices:["ご栄転おめでとうございます。","転勤ですか。","いいですね。","がんばってください。"],
+     correct:0,explain:"「ご栄転おめでとうございます」は転勤を伴う昇進へのお祝いです。",explainEn:"'ご栄転おめでとうございます' specifically congratulates a promotion that involves relocation."},
+   ],
+   sort:[{instruction:"正しい順番に並べ替えてください",instructionEn:"Put the words in the correct order",
+     parts:["おめでとうございます。","ご昇進"],
+     answer:[1,0],correct:"ご昇進おめでとうございます。"}]
+  },
+ ]
+};
+
+// ════════════════════════════════════════
+// SPEECH
+// ════════════════════════════════════════
+const langConfig=[
+  {key:"ja",flag:"🇯🇵",label:"日本語",code:"ja-JP"},
+  {key:"en",flag:"🇺🇸",label:"English",code:"en-US"},
+  {key:"zh",flag:"🇨🇳",label:"中文",code:"zh-CN"},
+  {key:"ko",flag:"🇰🇷",label:"한국어",code:"ko-KR"},
+  {key:"vi",flag:"🇻🇳",label:"Tiếng Việt",code:"vi-VN"},
+];
+const spColors=["#1a5276","#117a65","#6e2f8a","#922b21"];
+
+function speak(text,code,btn){
+  if(!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.speak-btn.speaking').forEach(b=>b.classList.remove('speaking'));
+  const clean=text.replace(/（[^）]*）/g,'').replace(/〜/g,'').replace(/〔[^〕]*〕/g,'').trim();
+  const u=new SpeechSynthesisUtterance(clean);
+  u.lang=code;u.rate=0.88;
+  if(btn){btn.classList.add('speaking');u.onend=u.onerror=()=>btn.classList.remove('speaking');}
+  window.speechSynthesis.speak(u);
+}
+function sb(text,code,cls=''){
+  const s=text.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'&quot;');
+  return `<button class="speak-btn ${cls}" onclick="speak('${s}','${code}',this)">🔊</button>`;
+}
+
+// ════════════════════════════════════════
+// LEARNED
+// ════════════════════════════════════════
+const learned={l1:new Set(),l2:new Set()};
+try{
+  learned.l1=new Set(JSON.parse(localStorage.getItem('bj30_l1')||'[]'));
+  learned.l2=new Set(JSON.parse(localStorage.getItem('bj30_l2')||'[]'));
+}catch(e){}
+
+function toggleLearned(lesson,id){
+  const c=document.getElementById(`vc-${lesson}-${id}`);
+  const b=c.querySelector('.learned-btn');
+  if(learned[lesson].has(id)){learned[lesson].delete(id);c.classList.remove('learned');b.textContent='覚えた';}
+  else{learned[lesson].add(id);c.classList.add('learned');b.textContent='✓ 覚えた！';}
+  try{localStorage.setItem(`bj30_${lesson}`,JSON.stringify([...learned[lesson]]));}catch(e){}
+  updateProgress(lesson);
+}
+function updateProgress(lesson){
+  const total=document.querySelectorAll(`.${lesson}-vocab-card`).length,done=learned[lesson].size;
+  const pct=total?Math.round(done/total*100):0;
+  document.getElementById(`${lesson}-prog-text`).textContent=`${done} / ${total} 覚えた`;
+  document.getElementById(`${lesson}-prog-fill`).style.width=pct+'%';
+  document.getElementById(`${lesson}-prog-pct`).textContent=pct+'%';
+}
+
+// ════════════════════════════════════════
+// RENDER VOCAB
+// ════════════════════════════════════════
+function renderVocab(lesson,data){
+  document.getElementById(`${lesson}-vocab-cards`).innerHTML=data.vocabSections.map(sec=>`
+    <div class="section-group visible" data-section="${sec.id}">
+      <div class="section-title">${sec.title}</div>
+      <div class="cards-grid">${sec.words.map((w,i)=>{
+        const id=`${sec.id}_${i}`,lrn=learned[lesson].has(id);
+        const rows=langConfig.map(l=>{
+          const txt=l.key==='ja'?w.jp:w[l.key]||'—';
+          const rdRow=l.key==='ja'&&w.rd&&w.rd!=='—'
+            ?`<div class="reading-row"><span class="reading-text">${w.rd}</span>${sb(w.rd,l.code)}</div>`:'';
+          const mainTxt=l.key==='ja'
+            ?`<div class="lang-text" style="font-size:1.35rem;font-weight:700;color:#1a5276">${w.jp}</div>${rdRow}`
+            :`<div class="lang-text">${txt}</div>`;
+          return `<div class="lang-row lang-${l.key}"><div class="lang-info"><div class="lang-label-sm">${l.flag} ${l.label}</div>${mainTxt}</div>${sb(txt,l.code)}</div>`;
+        }).join('');
+        return `<div class="vocab-card ${lesson}-vocab-card${lrn?' learned':''}" id="vc-${lesson}-${id}">${rows}
+          <div class="card-footer"><button class="learned-btn" onclick="toggleLearned('${lesson}','${id}')">${lrn?'✓ 覚えた！':'覚えた'}</button></div>
+        </div>`;
+      }).join('')}</div>
+    </div>`).join('');
+  updateProgress(lesson);
+}
+
+// ════════════════════════════════════════
+// RENDER EXPR
+// ════════════════════════════════════════
+function renderExpr(lesson,data){
+  document.getElementById(`${lesson}-expr-cards`).innerHTML=data.exprSections.map(sec=>`
+    <div class="section-group visible" data-section="${sec.id}">
+      <div class="section-title">${sec.title}</div>
+      <div class="expr-grid">${sec.exprs.map(e=>`
+        <div class="expr-card">
+          <div class="expr-jp"><span class="expr-jp-text">${e.jp}</span>${sb(e.jp,'ja-JP')}</div>
+          ${langConfig.filter(l=>l.key!=='ja').map(l=>`
+            <div class="lang-row lang-${l.key}" style="padding:9px 14px">
+              <div class="lang-info"><div class="lang-label-sm">${l.flag} ${l.label}</div><div class="lang-text">${e[l.key]||'—'}</div></div>${sb(e[l.key]||'',l.code)}
+            </div>`).join('')}
+        </div>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+// ════════════════════════════════════════
+// RENDER DIALOGUE
+// ════════════════════════════════════════
+function renderDialogue(lesson,data){
+  document.getElementById(`${lesson}-dialogue-cards`).innerHTML=`<div class="dialogue-wrap">`+
+    data.dialogueSections.map(sec=>`
+    <div class="section-group visible" data-section="${sec.id}">
+      <div class="dialogue-card">
+        <div class="dialogue-header">🗣 ${sec.title}</div>
+        <div class="dialogue-lines">${sec.lines.map((line,li)=>`
+          <div class="dialogue-line">
+            <div class="speaker-row">
+              <div class="speaker-badge" style="background:${spColors[li%4]}">${line.sp}</div>
+              <div class="speaker-jp">${line.ja} ${sb(line.ja,'ja-JP','btn-ja')}</div>
+            </div>
+            <div class="lang-translations">
+              <div class="trans-row r-en"><span class="trans-label">🇺🇸 EN</span><span class="trans-text">${line.en}</span>${sb(line.en,'en-US')}</div>
+              <div class="trans-row r-zh"><span class="trans-label">🇨🇳 ZH</span><span class="trans-text">${line.zh}</span>${sb(line.zh,'zh-CN')}</div>
+              <div class="trans-row r-ko"><span class="trans-label">🇰🇷 KO</span><span class="trans-text">${line.ko}</span>${sb(line.ko,'ko-KR')}</div>
+              <div class="trans-row r-vi"><span class="trans-label">🇻🇳 VI</span><span class="trans-text">${line.vi}</span>${sb(line.vi,'vi-VN')}</div>
+            </div>
+          </div>`).join('')}
+        </div>
+        ${sec.sub1&&sec.sub1.length?`<div class="sub-practice"><strong>① の言い換え練習</strong>${sec.sub1.join('　／　')}</div>`:''}
+        ${sec.sub2&&sec.sub2.length?`<div class="sub-practice"><strong>② の言い換え練習</strong>${sec.sub2.join('　／　')}</div>`:''}
+      </div>
+    </div>`).join('')+`</div>`;
+}
+
+// ════════════════════════════════════════
+// PRACTICE ENGINE
+// ════════════════════════════════════════
+const practiceState={l1:{type:'quiz',si:0,qi:0,score:0,answered:false},l2:{type:'quiz',si:0,qi:0,score:0,answered:false}};
+let sortPlaced=[],sortPool=[];
+
+function makePerson(cfg){
+  const bow=cfg.bowing?'bowing':'';
+  const femHead=cfg.hasFemale?'female':'';
+  return `<div class="person ${bow}">
+    <div class="person-head ${femHead}"><div class="face-smile"></div></div>
+    <div class="person-body ${cfg.body}" style="position:relative">
+      <div class="person-arm-l"></div><div class="person-arm-r"></div>
+      ${!cfg.hasFemale?'<div class="person-tie"></div>':''}
+    </div>
+    ${cfg.hasFemale
+      ?`<div class="person-leg skirt"></div><div class="person-feet"><div class="person-foot"></div><div class="person-foot"></div></div>`
+      :`<div class="person-legs"><div class="person-leg"></div><div class="person-leg"></div></div><div class="person-feet"><div class="person-foot"></div><div class="person-foot"></div></div>`}
+    <div style="font-size:0.65rem;color:#5d6d7e;margin-top:4px;text-align:center;font-weight:700">${cfg.label}</div>
+  </div>`;
+}
+
+function makeIll(ill,bubText=''){
+  return `<div class="illustration" style="background:${ill.bg}">
+    <div class="ill-bg-floor"></div><div class="ill-building"></div>
+    ${ill.people.map(p=>makePerson(p)).join('')}
+    ${bubText?`<div class="bubble">${bubText}</div>`:''}
+  </div>
+  <div style="padding:8px 18px 4px;font-size:0.8rem;color:#5d6d7e;font-style:italic">
+    📍 ${ill.desc}<br><span style="color:#a0aec0">${ill.descEn}</span>
+  </div>`;
+}
+
+function makeDots(lesson){
+  const scenarios=lesson==='l1'?L1.scenarios:L2.scenarios;
+  const si=practiceState[lesson].si;
+  return `<div class="progress-dots">${scenarios.map((_,i)=>{
+    let cls='dot';
+    if(i<si)cls+=' done';else if(i===si)cls+=' active';
+    return `<div class="${cls}"></div>`;
+  }).join('')}</div>`;
+}
+
+function setPracticeType(type,lesson,btn){
+  practiceState[lesson].type=type;
+  practiceState[lesson].si=0;practiceState[lesson].qi=0;
+  practiceState[lesson].score=0;practiceState[lesson].answered=false;
+  document.querySelectorAll(`#pane-${lesson}-practice .sec-btn`).forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPractice(lesson);
+}
+
+function renderPractice(lesson){
+  const ps=practiceState[lesson];
+  const scenarios=lesson==='l1'?L1.scenarios:L2.scenarios;
+  const area=document.getElementById(`${lesson}-practice-area`);
+  const sc=scenarios[ps.si];
+  if(!sc){
+    const total=scenarios.reduce((a,s)=>a+s.quiz.length,0);
+    area.innerHTML=`<div class="scenario-card" style="text-align:center;padding:40px 20px">
+      <div style="font-size:3rem;margin-bottom:16px">🎉</div>
+      <div style="font-size:1.4rem;font-weight:700;color:#1a5276;margin-bottom:10px">お疲れ様でした！</div>
+      <div style="font-size:1rem;color:#718096;margin-bottom:20px">スコア: ${ps.score} / ${total}</div>
+      <button class="next-btn" onclick="practiceState['${lesson}']={type:'${ps.type}',si:0,qi:0,score:0,answered:false};renderPractice('${lesson}')">もう一度 🔄</button>
+    </div>`;
+    return;
+  }
+  if(ps.type==='quiz')renderQuiz(lesson,sc,area);
+  else renderSort(lesson,sc,area);
+}
+
+function renderQuiz(lesson,sc,area){
+  const ps=practiceState[lesson];
+  const q=sc.quiz[ps.qi];
+  const total=sc.quiz.length;
+  const shuffled=[...q.choices].map((c,i)=>({c,i})).sort(()=>Math.random()-0.5);
+  area.innerHTML=`${makeDots(lesson)}
+    <div class="scenario-card">
+      <div class="scenario-header"><h3>${sc.title}</h3><span>Q ${ps.qi+1} / ${total}</span></div>
+      ${makeIll(sc.ill,q.q)}
+      <div class="question-area">
+        <div class="question-label">質問 / Question</div>
+        <div class="question-text">${q.q}<br><span style="font-size:0.83rem;color:#718096;font-weight:400">${q.qEn}</span></div>
+        <div class="choices">${shuffled.map(({c,i})=>`
+          <button class="choice-btn" onclick="answerQuiz('${lesson}',${i},this)" id="${lesson}-choice-${i}">${c} ${sb(c,'ja-JP')}</button>`).join('')}
+        </div>
+        <div class="feedback" id="${lesson}-feedback"></div>
+      </div>
+      <div class="score-bar">
+        <span>スコア: <span class="score-val">${ps.score}</span></span>
+        <button class="next-btn" id="${lesson}-next-btn" onclick="nextQuiz('${lesson}')" disabled>次へ →</button>
+      </div>
+    </div>`;
+}
+
+function answerQuiz(lesson,idx,btn){
+  const ps=practiceState[lesson];
+  if(ps.answered)return;
+  ps.answered=true;
+  const scenarios=lesson==='l1'?L1.scenarios:L2.scenarios;
+  const q=scenarios[ps.si].quiz[ps.qi];
+  const fb=document.getElementById(`${lesson}-feedback`);
+  const nextBtn=document.getElementById(`${lesson}-next-btn`);
+  document.querySelectorAll(`#${lesson}-practice-area .choice-btn`).forEach(b=>b.disabled=true);
+  if(idx===q.correct){
+    btn.classList.add('correct');ps.score++;
+    fb.className='feedback ok show';
+    fb.innerHTML=`✅ 正解！<br><span style="font-size:0.83rem">${q.explain}</span><br><span style="font-size:0.8rem;color:#718096">${q.explainEn}</span>`;
+    speak(q.choices[q.correct],'ja-JP');
+  }else{
+    btn.classList.add('wrong');
+    document.getElementById(`${lesson}-choice-${q.correct}`).classList.add('correct');
+    fb.className='feedback ng show';
+    fb.innerHTML=`❌ 不正解。<br><strong style="color:#145a32">正解: ${q.choices[q.correct]}</strong><br><span style="font-size:0.83rem">${q.explain}</span>`;
+    speak(q.choices[q.correct],'ja-JP');
+  }
+  nextBtn.disabled=false;
+}
+
+function nextQuiz(lesson){
+  const ps=practiceState[lesson];
+  const scenarios=lesson==='l1'?L1.scenarios:L2.scenarios;
+  ps.qi++;ps.answered=false;
+  if(ps.qi>=scenarios[ps.si].quiz.length){ps.si++;ps.qi=0;}
+  renderPractice(lesson);
+}
+
+function renderSort(lesson,sc,area){
+  const ps=practiceState[lesson];
+  const ex=sc.sort[0];
+  sortPlaced=[];
+  sortPool=[...ex.parts].sort(()=>Math.random()-0.5);
+  area.innerHTML=`${makeDots(lesson)}
+    <div class="scenario-card">
+      <div class="scenario-header"><h3>${sc.title}</h3><span>並べ替え</span></div>
+      ${makeIll(sc.ill,'')}
+      <div class="question-area">
+        <div class="question-label">並べ替え練習 / Sorting Exercise</div>
+        <div class="question-text">${ex.instruction}<br><span style="font-size:0.83rem;color:#718096;font-weight:400">${ex.instructionEn}</span></div>
+        <div style="font-size:0.8rem;color:#a0aec0;margin-bottom:8px">👇 タップして移動 / Tap to move</div>
+        <div style="font-size:0.76rem;color:#a0aec0;margin-bottom:4px">📦 単語プール</div>
+        <div class="sort-pool" id="sort-pool">
+          ${sortPool.map((p,i)=>p?`<div class="sort-chip" id="chip-pool-${i}" onclick="moveChip('${lesson}','pool',${i})">${p}</div>`:''  ).join('')}
+        </div>
+        <div style="font-size:0.76rem;color:#a0aec0;margin-bottom:4px">✏️ 答え</div>
+        <div class="sort-answer" id="sort-answer"><span style="color:#a0aec0;font-size:0.8rem;align-self:center">ここに並べてください</span></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="check-sort-btn" onclick="checkSort('${lesson}')">確認する ✓</button>
+          <button class="check-sort-btn" style="background:#718096" onclick="resetSort('${lesson}')">リセット 🔄</button>
+        </div>
+        <div class="feedback" id="${lesson}-sort-feedback" style="margin-top:12px"></div>
+      </div>
+      <div class="score-bar">
+        <span>スコア: <span class="score-val">${ps.score}</span></span>
+        <button class="next-btn" id="${lesson}-sort-next-btn" onclick="nextSort('${lesson}')" disabled>次へ →</button>
+      </div>
+    </div>`;
+}
+
+function moveChip(lesson,from,idx){
+  const scenarios=lesson==='l1'?L1.scenarios:L2.scenarios;
+  const ex=scenarios[practiceState[lesson].si].sort[0];
+  if(from==='pool'){
+    const word=sortPool[idx];if(!word)return;
+    sortPlaced.push({word,poolIdx:idx});sortPool[idx]=null;
+  }else{
+    const item=sortPlaced[idx];sortPool[item.poolIdx]=item.word;sortPlaced.splice(idx,1);
+  }
+  refreshSort(lesson);
+}
+
+function refreshSort(lesson){
+  const pool=document.getElementById('sort-pool');
+  const ans=document.getElementById('sort-answer');
+  if(!pool||!ans)return;
+  pool.innerHTML=sortPool.map((p,i)=>p?`<div class="sort-chip" id="chip-pool-${i}" onclick="moveChip('${lesson}','pool',${i})">${p}</div>`:'').join('');
+  ans.innerHTML=sortPlaced.length===0
+    ?`<span style="color:#a0aec0;font-size:0.8rem;align-self:center">ここに並べてください</span>`
+    :sortPlaced.map((item,i)=>`<div class="sort-chip placed" onclick="moveChip('${lesson}','ans',${i})">${item.word}</div>`).join('');
+}
+
+function checkSort(lesson){
+  const scenarios=lesson==='l1'?L1.scenarios:L2.scenarios;
+  const ex=scenarios[practiceState[lesson].si].sort[0];
+  const fb=document.getElementById(`${lesson}-sort-feedback`);
+  const nextBtn=document.getElementById(`${lesson}-sort-next-btn`);
+  const userAnswer=sortPlaced.map(i=>i.word).join('');
+  if(userAnswer===ex.correct){
+    fb.className='feedback ok show';fb.innerHTML=`✅ 正解！<br><strong>${ex.correct}</strong>`;
+    practiceState[lesson].score++;
+    document.querySelectorAll('.sort-chip.placed').forEach(c=>c.classList.add('correct-chip'));
+    speak(ex.correct,'ja-JP');
+  }else{
+    fb.className='feedback ng show';fb.innerHTML=`❌ 不正解。<br><strong style="color:#145a32">正解: ${ex.correct}</strong>`;
+    document.querySelectorAll('.sort-chip.placed').forEach(c=>c.classList.add('wrong-chip'));
+    speak(ex.correct,'ja-JP');
+  }
+  document.querySelectorAll('.sort-chip').forEach(c=>{c.onclick=null;c.style.cursor='default';});
+  nextBtn.disabled=false;
+}
+
+function resetSort(lesson){
+  const scenarios=lesson==='l1'?L1.scenarios:L2.scenarios;
+  sortPlaced=[];
+  sortPool=[...scenarios[practiceState[lesson].si].sort[0].parts].sort(()=>Math.random()-0.5);
+  document.getElementById(`${lesson}-sort-feedback`).className='feedback';
+  document.getElementById(`${lesson}-sort-next-btn`).disabled=true;
+  refreshSort(lesson);
+}
+
+function nextSort(lesson){
+  practiceState[lesson].si++;practiceState[lesson].answered=false;
+  renderPractice(lesson);
+}
+
+// ════════════════════════════════════════
+// TEACHER MODE
+const TEACHER_PW='naomi1372';
+let teacherMode=false;
+function teacherLogin(){
+  if(teacherMode){
+    teacherMode=false;
+    document.getElementById('teacher-btn').textContent='👩‍🏫 先生';
+    document.getElementById('teacher-btn').style.background='rgba(255,255,255,0.1)';
+    applyTeacherMode();return;
+  }
+  document.getElementById('teacher-pw').value='';
+  document.getElementById('teacher-error').style.display='none';
+  document.getElementById('teacherModal').classList.add('show');
+  setTimeout(()=>document.getElementById('teacher-pw').focus(),100);
+}
+function checkTeacher(){
+  const pw=document.getElementById('teacher-pw').value;
+  if(pw===TEACHER_PW){
+    teacherMode=true;
+    document.getElementById('teacherModal').classList.remove('show');
+    document.getElementById('teacher-btn').textContent='✅ 先生モード中';
+    document.getElementById('teacher-btn').style.background='rgba(39,174,96,0.6)';
+    applyTeacherMode();
+  }else{
+    document.getElementById('teacher-error').style.display='block';
+    document.getElementById('teacher-pw').value='';
+    document.getElementById('teacher-pw').focus();
+  }
+}
+function applyTeacherMode(){
+  document.querySelectorAll('.purchase-banner').forEach(el=>{
+    el.style.display=teacherMode?'none':'';
+  });
+  document.querySelectorAll('.preview-notice').forEach(el=>{
+    el.style.display=teacherMode?'none':'';
+  });
+}
+
+// QR CODE
+// ════════════════════════════════════════
+let qrGenerated=false;
+function showQR(){
+  document.getElementById('qrModal').classList.add('show');
+  if(!qrGenerated){
+    qrGenerated=true;
+    const url=window.location.href;
+    document.getElementById('qrUrl').textContent=url;
+    try{
+      new QRCode(document.getElementById('qrcode'),{
+        text:url,width:200,height:200,
+        colorDark:'#1a5276',colorLight:'#ffffff',
+        correctLevel:QRCode.CorrectLevel.M
+      });
+    }catch(e){
+      document.getElementById('qrcode').innerHTML=`<div style="padding:20px;background:#f0f4f8;border-radius:10px;color:#718096;font-size:0.85rem">QRコードはサイトをサーバーで<br>開いている時に表示されます</div>`;
+    }
+  }
+}
+function hideQR(e){
+  if(e.target===document.getElementById('qrModal'))
+    document.getElementById('qrModal').classList.remove('show');
+}
+
+// ════════════════════════════════════════
+// NAV
+// ════════════════════════════════════════
+function switchLesson(num,btn){
+  document.querySelectorAll('.lesson-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.lesson-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(`lesson-${num}`).classList.add('active');
+  btn.classList.add('active');
+  const lesson='l'+num;
+  renderPractice(lesson);
+}
+
+function switchTab(name,btn,lesson){
+  const pane=document.getElementById(`lesson-${lesson.slice(1)}`);
+  pane.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));
+  pane.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(`pane-${name}`).classList.add('active');
+  btn.classList.add('active');
+  if(name.includes('practice'))renderPractice(lesson);
+}
+
+function filterSection(pane,id,btn){
+  const container=document.getElementById(`pane-${pane}`);
+  container.querySelectorAll('.section-group').forEach(g=>g.classList.toggle('visible',id==='all'||g.dataset.section===id));
+  container.querySelectorAll('.sec-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ════════════════════════════════════════
+// LESSON 3 DATA
+const L3={
+ vocabSections:[
+  {id:"d1",title:"談話1 — 不在を伝える",words:[
+    {jp:"不在",rd:"ふざい",en:"absence",zh:"不在",ko:"부재",vi:"vắng mặt"},
+    {jp:"ただいま",rd:"—",en:"at the moment / right now",zh:"现在",ko:"지금",vi:"ngay lúc này"},
+    {jp:"席をはずす",rd:"せきをはずす",en:"to step away from desk",zh:"离开座位",ko:"자리를 비우다",vi:"rời khỏi chỗ ngồi"},
+    {jp:"伝言",rd:"でんごん",en:"message",zh:"留言",ko:"전언",vi:"lời nhắn"},
+    {jp:"かしこまりました",rd:"—",en:"certainly (very formal)",zh:"明白了（非常正式）",ko:"알겠습니다（격식체）",vi:"tôi hiểu rồi (trang trọng)"},
+    {jp:"外出",rd:"がいしゅつ",en:"going out",zh:"外出",ko:"외출",vi:"ra ngoài"},
+    {jp:"〜中",rd:"〜ちゅう",en:"in the middle of ~",zh:"～中",ko:"～중",vi:"đang ~"},
+    {jp:"後ほど",rd:"のちほど",en:"later",zh:"稍后",ko:"나중에",vi:"sau một lúc"},
+    {jp:"電話に出る",rd:"でんわにでる",en:"to answer the phone",zh:"接电话",ko:"전화를 받다",vi:"nghe điện thoại"},
+    {jp:"聞き返す",rd:"ききかえす",en:"to ask to repeat",zh:"再问一遍",ko:"다시 묻다",vi:"hỏi lại"},
+    {jp:"失礼しました",rd:"しつれいしました",en:"excuse me / I'm sorry",zh:"失礼了",ko:"실례했습니다",vi:"xin lỗi"},
+  ]},
+  {id:"d2",title:"談話2 — 伝言を頼む",words:[
+    {jp:"変更（する）",rd:"へんこう",en:"change / to change",zh:"变更",ko:"변경하다",vi:"thay đổi"},
+    {jp:"承知（する）",rd:"しょうち",en:"understood",zh:"了解",ko:"알다",vi:"hiểu"},
+    {jp:"パンフレット",rd:"—",en:"pamphlet / brochure",zh:"小册子",ko:"팸플릿",vi:"tờ rơi"},
+    {jp:"先日",rd:"せんじつ",en:"the other day",zh:"前几天",ko:"요전날",vi:"hôm trước"},
+    {jp:"見積もり",rd:"みつもり",en:"estimate / quotation",zh:"报价",ko:"견적",vi:"báo giá"},
+    {jp:"至急",rd:"しきゅう",en:"urgent",zh:"紧急",ko:"긴급히",vi:"khẩn cấp"},
+    {jp:"折り返し",rd:"おりかえし",en:"return call / callback",zh:"回电话",ko:"콜백",vi:"gọi lại"},
+  ]},
+  {id:"d3",title:"談話3 — 伝言を確認する",words:[
+    {jp:"確認（する）",rd:"かくにん",en:"confirmation / to confirm",zh:"确认",ko:"확인하다",vi:"xác nhận"},
+    {jp:"念のため",rd:"ねんのため",en:"just to be sure",zh:"为了确认",ko:"확인 차",vi:"cho chắc chắn"},
+    {jp:"復唱（する）",rd:"ふくしょう",en:"to repeat back",zh:"复述",ko:"복창하다",vi:"nhắc lại"},
+    {jp:"繰り返す",rd:"くりかえす",en:"to repeat",zh:"重复",ko:"반복하다",vi:"lặp lại"},
+  ]},
+  {id:"d4",title:"談話4 — 相手の社名や名前を聞き返す",words:[
+    {jp:"相手",rd:"あいて",en:"the other party",zh:"对方",ko:"상대방",vi:"đối phương"},
+    {jp:"社名",rd:"しゃめい",en:"company name",zh:"公司名称",ko:"회사명",vi:"tên công ty"},
+  ]},
+  {id:"k1",title:"会話1",words:[
+    {jp:"伝言を受ける",rd:"でんごんをうける",en:"to take a message",zh:"接受留言",ko:"메시지를 받다",vi:"nhận lời nhắn"},
+  ]},
+  {id:"k2",title:"会話2",words:[
+    {jp:"少々",rd:"しょうしょう",en:"a moment (formal)",zh:"稍等",ko:"잠시",vi:"một chút"},
+  ]},
+  {id:"r1",title:"練習1",words:[
+    {jp:"打ち合わせ",rd:"うちあわせ",en:"meeting / briefing",zh:"碰头会",ko:"미팅",vi:"cuộc họp"},
+    {jp:"報告（する）",rd:"ほうこく",en:"report / to report",zh:"报告",ko:"보고하다",vi:"báo cáo"},
+    {jp:"サンプル",rd:"—",en:"sample",zh:"样品",ko:"샘플",vi:"mẫu"},
+    {jp:"商品",rd:"しょうひん",en:"product / goods",zh:"商品",ko:"상품",vi:"hàng hóa"},
+    {jp:"入荷（する）",rd:"にゅうか",en:"arrival of goods",zh:"到货",ko:"입하하다",vi:"hàng về"},
+    {jp:"日時",rd:"にちじ",en:"date and time",zh:"日期和时间",ko:"일시",vi:"ngày và giờ"},
+  ]},
+  {id:"r2",title:"練習2",words:[
+    {jp:"来客",rd:"らいきゃく",en:"visitor / guest",zh:"来客",ko:"방문객",vi:"khách đến"},
+  ]},
+ ],
+ exprSections:[
+  {id:"call",title:"電話をかける — Making a phone call",exprs:[
+    {jp:"〔相手の名前〕さん／様（は）おいでになりますか。",en:"Is Mr./Ms. [name] available?",zh:"请问〔姓名〕先生/女士在吗？",ko:"〔이름〕 님 계십니까?",vi:"Anh/Chị〔tên〕có ở đó không?"},
+    {jp:"ご伝言をお願いできますか。",en:"Could I leave a message?",zh:"可以请您转告吗？",ko:"메시지를 남길 수 있을까요?",vi:"Tôi có thể nhắn lại được không?"},
+    {jp:"〜とお伝えください。",en:"Please tell him/her that ~.",zh:"请转告他/她〜。",ko:"〜라고 전해 주세요.",vi:"Vui lòng nhắn lại rằng ~."},
+    {jp:"後ほどかけ直します。",en:"I will call back later.",zh:"我稍后再打。",ko:"나중에 다시 전화하겠습니다.",vi:"Tôi sẽ gọi lại sau."},
+    {jp:"失礼いたします。",en:"Goodbye. (ending a call)",zh:"打扰了。（挂电话）",ko:"실례하겠습니다.",vi:"Xin lỗi đã làm phiền."},
+  ]},
+  {id:"receive",title:"電話を受ける — Receiving a phone call",exprs:[
+    {jp:"〔社名〕でございます。",en:"This is [company name].",zh:"这里是〔公司名〕。",ko:"〔회사명〕입니다.",vi:"Đây là〔tên công ty〕."},
+    {jp:"〜ておりますが。",en:"He/She is currently ~.",zh:"他/她现在〜。",ko:"〜하고 있습니다만.",vi:"Hiện tại anh/chị ấy đang ~."},
+    {jp:"何か伝言がございましたら、お伝えいたしますが。",en:"If you have a message, I will pass it on.",zh:"如果您有留言，我会转达。",ko:"전할 말씀이 있으시면 전해 드리겠습니다만.",vi:"Nếu bạn có lời nhắn, tôi sẽ chuyển lại."},
+    {jp:"念のためお電話番号をいただけますでしょうか。",en:"Could I have your phone number, just to be sure?",zh:"为了确认，可以告诉我您的电话号码吗？",ko:"확인 차 전화번호를 알려 주시겠습니까?",vi:"Bạn có thể cho tôi số điện thoại không?"},
+    {jp:"復唱いたします。",en:"I will repeat that back.",zh:"我来复述一遍。",ko:"복창하겠습니다.",vi:"Tôi sẽ nhắc lại."},
+    {jp:"〜ということでよろしいでしょうか。",en:"Is it correct that ~?",zh:"〜，这样可以吗？",ko:"〜라는 것이 맞습니까?",vi:"Có phải là ~ không?"},
+  ]},
+ ],
+ dialogueSections:[
+  {id:"d1",title:"談話1 — 不在を伝える",
+   sub1:["①おいでになりますか","①いらっしゃいますか","①お願いできますか"],
+   sub2:["②席をはずしております","②外出中でございます","②ほかの電話に出ております","②食事に出ております"],
+   lines:[
+    {sp:"A",ja:"私、さくら貿易の山崎と申しますが、課長の田中様①おいでになりますか。",en:"This is Yamazaki from Sakura Trading. ①Is Mr. Tanaka available?",zh:"我是樱花贸易的山崎，请问课长田中先生①在吗？",ko:"저는 사쿠라 무역의 야마자키입니다만, 다나카 과장님 ①계십니까?",vi:"Tôi là Yamazaki từ Sakura Trading. ①Anh Tanaka có ở đó không?"},
+    {sp:"B",ja:"申し訳ございません。田中はただいま②席をはずしております。",en:"I'm sorry. Tanaka is ②away from his desk at the moment.",zh:"非常抱歉，田中②现在离开座位了。",ko:"죄송합니다. 다나카는 지금 ②자리를 비우고 있습니다.",vi:"Xin lỗi. Tanaka ②đang rời khỏi chỗ ngồi lúc này."},
+    {sp:"A",ja:"では、ご伝言をお願いできますか。",en:"Then, could I leave a message?",zh:"那么，可以请您转告吗？",ko:"그럼, 메시지를 남길 수 있을까요?",vi:"Vậy thì, tôi có thể nhắn lại được không?"},
+    {sp:"B",ja:"はい、かしこまりました。",en:"Yes, certainly.",zh:"是的，明白了。",ko:"네, 알겠습니다.",vi:"Vâng, tôi hiểu."},
+   ]},
+  {id:"d2",title:"談話2 — 伝言を頼む",sub1:["明日2時のお約束を3時に変更していただきたい","明日10時に弊社へいらっしゃっていただきたい","折り返しお電話をいただきたい"],sub2:[],
+   lines:[
+    {sp:"A",ja:"何か伝言がございましたら、お伝えいたしますが。",en:"If you have a message, I will pass it on.",zh:"如果您有留言，我会转达。",ko:"전할 말씀이 있으시면 전해 드리겠습니다만.",vi:"Nếu bạn có lời nhắn, tôi sẽ chuyển lại."},
+    {sp:"B",ja:"それでは、明日2時のお約束を3時に変更していただきたいとお伝えください。",en:"Please tell him I'd like to change tomorrow's 2 o'clock appointment to 3 o'clock.",zh:"那请转告他，希望把明天2点的约定改为3点。",ko:"그럼 내일 2시 약속을 3시로 변경해 주셨으면 한다고 전해 주세요.",vi:"Vui lòng nhắn rằng tôi muốn đổi cuộc hẹn 2 giờ ngày mai sang 3 giờ."},
+    {sp:"A",ja:"承知いたしました。",en:"Understood.",zh:"明白了。",ko:"알겠습니다.",vi:"Tôi hiểu rồi."},
+   ]},
+  {id:"d3",title:"談話3 — 伝言を確認する",sub1:["①復唱いたします","①繰り返します"],sub2:[],
+   lines:[
+    {sp:"A",ja:"念のため①復唱いたします。明日2時のお約束を3時に変更なさりたいということでよろしいでしょうか。",en:"Just to be sure, ①I'll repeat that. Is it correct that you'd like to change tomorrow's 2 o'clock to 3 o'clock?",zh:"为了确认，①我来复述一遍。是希望把明天2点的约定改为3点，这样对吗？",ko:"확인 차 ①복창하겠습니다. 내일 2시 약속을 3시로 변경하고 싶으시다는 것이 맞습니까?",vi:"Cho chắc chắn, ①tôi sẽ nhắc lại. Anh muốn đổi cuộc hẹn 2 giờ ngày mai sang 3 giờ, đúng không?"},
+    {sp:"B",ja:"はい、そうです。",en:"Yes, that's right.",zh:"是的，没错。",ko:"네, 맞습니다.",vi:"Vâng, đúng vậy."},
+   ]},
+  {id:"d4",title:"談話4 — 相手の社名や名前を聞き返す",sub1:["①どちらの山崎様でいらっしゃいますか","①もう一度お名前をお願いできますか","①もう一度おっしゃっていただけますか"],sub2:[],
+   lines:[
+    {sp:"A",ja:"はい、ABCカンパニーでございます。",en:"Hello, this is ABC Company.",zh:"您好，这里是ABC公司。",ko:"네, ABC 컴퍼니입니다.",vi:"Xin chào, đây là ABC Company."},
+    {sp:"B",ja:"私、さくら貿易の山崎と申しますが…。",en:"This is Yamazaki from Sakura Trading…",zh:"我是樱花贸易的山崎……",ko:"저는 사쿠라 무역의 야마자키입니다만……",vi:"Tôi là Yamazaki từ Sakura Trading…"},
+    {sp:"A",ja:"申し訳ございません。①どちらの山崎様でいらっしゃいますか。",en:"I'm sorry. ①Which Yamazaki are you, please?",zh:"非常抱歉，①请问您是哪位山崎先生/女士？",ko:"죄송합니다. ①어느 야마자키 씨이십니까?",vi:"Xin lỗi. ①Đây là anh Yamazaki nào ạ?"},
+    {sp:"B",ja:"さくら貿易です。",en:"Sakura Trading.",zh:"樱花贸易。",ko:"사쿠라 무역입니다.",vi:"Sakura Trading."},
+    {sp:"A",ja:"失礼いたしました。",en:"I beg your pardon.",zh:"失礼了。",ko:"실례했습니다.",vi:"Xin lỗi về điều đó."},
+   ]},
+ ],
+ scenarios:[
+  {id:"s1",title:"シナリオ1：電話を受けて不在を伝える",
+   ill:{bg:"linear-gradient(180deg,#eaf4fb,#d6eaf8)",desc:"電話がかかってきました。担当者が席をはずしています。",descEn:"You receive a call but the person is away.",
+     people:[{body:"blouse",hasFemale:true,bowing:false,label:"あなた（受ける）"},{body:"suit-dark",hasFemale:false,bowing:false,label:"相手"}]},
+   quiz:[
+    {q:"担当者が席をはずしている時、何と言いますか？",qEn:"What do you say when the person is away from their desk?",
+     choices:["申し訳ございません。田中はただいま席をはずしております。","田中さんはいません。","田中はいま忙しいです。","後で電話してください。"],
+     correct:0,explain:"「申し訳ございません」で謝罪し、「ただいま〜ております」で不在を伝えます。",explainEn:"Apologize with '申し訳ございません' and explain the absence with 'ただいま〜ております'."},
+    {q:"伝言を申し出る時は何と言いますか？",qEn:"How do you offer to take a message?",
+     choices:["何か伝言がございましたら、お伝えいたしますが。","伝言はありますか。","何か言いますか。","メモしますよ。"],
+     correct:0,explain:"「何か伝言がございましたら、お伝えいたしますが」は丁寧な伝言の申し出です。",explainEn:"'何か伝言がございましたら、お伝えいたしますが' is a polite offer to take a message."},
+    {q:"伝言を確認する時は？",qEn:"How do you confirm the message?",
+     choices:["念のため復唱いたします。","もう一度言ってください。","わかりました。","はい、そうですか。"],
+     correct:0,explain:"「念のため復唱いたします」と言ってから伝言を繰り返すのがビジネスマナーです。",explainEn:"Saying '念のため復唱いたします' before repeating the message is proper business etiquette."},
+   ],
+   sort:[{instruction:"正しい順番に並べ替えてください",instructionEn:"Put the words in the correct order",
+     parts:["申し訳ございません。","田中はただいま","席をはずしております。"],
+     answer:[0,1,2],correct:"申し訳ございません。田中はただいま席をはずしております。"}]
+  },
+  {id:"s2",title:"シナリオ2：電話をかけて担当者を呼ぶ",
+   ill:{bg:"linear-gradient(180deg,#f5eef8,#e8d5f5)",desc:"取引先に電話をかけます。",descEn:"You call a client company.",
+     people:[{body:"suit-blue",hasFemale:false,bowing:false,label:"あなた（かける）"},{body:"suit-dark",hasFemale:true,bowing:false,label:"受付"}]},
+   quiz:[
+    {q:"担当者を呼び出す時は？",qEn:"How do you ask to speak to someone?",
+     choices:["営業部の木村様はおいでになりますか。","木村さんいますか。","木村を呼んでください。","木村さんに電話です。"],
+     correct:0,explain:"「〜様はおいでになりますか」は電話で担当者を呼び出す丁寧な表現です。",explainEn:"'〜様はおいでになりますか' is the polite way to ask to speak to someone."},
+    {q:"電話を切る時は？",qEn:"What do you say when ending a call?",
+     choices:["失礼いたします。","じゃあね。","バイバイ。","ありがとう。"],
+     correct:0,explain:"「失礼いたします」は電話を切る時のビジネス定番フレーズです。",explainEn:"'失礼いたします' is the standard phrase for ending a business call."},
+   ],
+   sort:[{instruction:"正しい順番に並べ替えてください",instructionEn:"Put the words in the correct order",
+     parts:["さくら貿易の山崎と申しますが、","営業部の木村様は","おいでになりますか。"],
+     answer:[0,1,2],correct:"さくら貿易の山崎と申しますが、営業部の木村様はおいでになりますか。"}]
+  },
+ ]
+};
+// LESSON 4 DATA
+const L4={
+ vocabSections:[
+  {id:"d1",title:"談話1 — 注意をする・あやまる",words:[
+    {jp:"おじぎ",rd:"—",en:"bow (greeting gesture)",zh:"鞠躬",ko:"인사/절",vi:"cúi chào"},
+    {jp:"深い",rd:"ふかい",en:"deep",zh:"深",ko:"깊다",vi:"sâu"},
+    {jp:"お客様",rd:"おきゃくさま",en:"customer / guest (honorific)",zh:"顾客（尊称）",ko:"고객님",vi:"khách hàng (kính ngữ)"},
+    {jp:"足を組む",rd:"あしをくむ",en:"to cross one's legs",zh:"跷腿",ko:"다리를 꼬다",vi:"bắt chéo chân"},
+    {jp:"地味",rd:"じみ",en:"plain / subdued / modest",zh:"朴素/低调",ko:"수수하다",vi:"giản dị / kín đáo"},
+  ]},
+  {id:"d2",title:"談話2 — 婉曲的に注意をする",words:[
+    {jp:"婉曲的",rd:"えんきょくてき",en:"indirect / roundabout",zh:"婉转的/间接的",ko:"완곡한",vi:"gián tiếp / nhẹ nhàng"},
+    {jp:"コスト",rd:"—",en:"cost",zh:"成本/费用",ko:"비용/코스트",vi:"chi phí"},
+    {jp:"見直す",rd:"みなおす",en:"to review / to reconsider",zh:"重新审视/重新考虑",ko:"재검토하다",vi:"xem xét lại"},
+    {jp:"気づく",rd:"きづく",en:"to notice / to realize",zh:"注意到/发现",ko:"알아채다/깨닫다",vi:"nhận ra / chú ý"},
+    {jp:"目につく",rd:"めにつく",en:"to catch one's eye / to be noticed",zh:"引人注目/显眼",ko:"눈에 띄다",vi:"đập vào mắt / dễ thấy"},
+    {jp:"報告書",rd:"ほうこくしょ",en:"report (document)",zh:"报告书",ko:"보고서",vi:"báo cáo (văn bản)"},
+    {jp:"ヘアスタイル",rd:"—",en:"hairstyle",zh:"发型",ko:"헤어스타일",vi:"kiểu tóc"},
+    {jp:"向く",rd:"むく",en:"to suit / to be suitable for",zh:"适合",ko:"어울리다/적합하다",vi:"phù hợp"},
+  ]},
+  {id:"d3",title:"談話3 — 他社の人に苦情を言う・あやまる",words:[
+    {jp:"苦情",rd:"くじょう",en:"complaint / grievance",zh:"投诉/抱怨",ko:"불만/불평",vi:"khiếu nại / than phiền"},
+    {jp:"見本",rd:"みほん",en:"sample / specimen",zh:"样品/样本",ko:"견본",vi:"mẫu"},
+    {jp:"届く",rd:"とどく",en:"to arrive / to be delivered",zh:"到达/送达",ko:"도착하다/전달되다",vi:"đến nơi / được giao"},
+    {jp:"請求書",rd:"せいきゅうしょ",en:"invoice / bill",zh:"账单/发票",ko:"청구서",vi:"hóa đơn"},
+    {jp:"発注書",rd:"はっちゅうしょ",en:"purchase order",zh:"订单",ko:"발주서",vi:"đơn đặt hàng"},
+    {jp:"納品（する）",rd:"のうひん",en:"delivery of goods / to deliver",zh:"交货/供货",ko:"납품（하다）",vi:"giao hàng"},
+    {jp:"昨日",rd:"さくじつ",en:"yesterday (formal)",zh:"昨天（正式）",ko:"어제（격식체）",vi:"hôm qua (trang trọng)"},
+  ]},
+  {id:"k1",title:"会話1 — あいづちを打つ",words:[
+    {jp:"うなずく",rd:"—",en:"to nod",zh:"点头",ko:"고개를 끄덕이다",vi:"gật đầu"},
+    {jp:"あいづちを打つ",rd:"あいづちをうつ",en:"to give back-channel responses",zh:"附和/回应",ko:"맞장구를 치다",vi:"phản hồi / đệm câu"},
+    {jp:"郷に入っては郷に従え",rd:"ごうにいってはごうにしたがえ",en:"when in Rome, do as the Romans do",zh:"入乡随俗",ko:"로마에 가면 로마법을 따르라",vi:"nhập gia tùy tục"},
+    {jp:"忠告",rd:"ちゅうこく",en:"advice / warning",zh:"忠告/劝告",ko:"충고",vi:"lời khuyên / cảnh báo"},
+  ]},
+  {id:"k2",title:"会話2",words:[
+    {jp:"作成",rd:"さくせい",en:"creation / drawing up",zh:"制作/创建",ko:"작성",vi:"tạo ra / soạn thảo"},
+  ]},
+  {id:"r1",title:"練習1",words:[
+    {jp:"遅刻",rd:"ちこく",en:"being late",zh:"迟到",ko:"지각",vi:"đến trễ"},
+    {jp:"評判",rd:"ひょうばん",en:"reputation",zh:"评价/口碑",ko:"평판",vi:"tiếng tăm / danh tiếng"},
+    {jp:"改良",rd:"かいりょう",en:"improvement",zh:"改良/改进",ko:"개량",vi:"cải tiến"},
+    {jp:"不満",rd:"ふまん",en:"dissatisfaction",zh:"不满",ko:"불만",vi:"bất mãn"},
+    {jp:"経費",rd:"けいひ",en:"expenses / costs",zh:"经费/开支",ko:"경비",vi:"chi phí"},
+    {jp:"無駄",rd:"むだ",en:"waste / useless",zh:"浪费/无用",ko:"낭비/무익",vi:"lãng phí / vô ích"},
+  ]},
+ ],
+ exprSections:[
+  {id:"warn",title:"注意をする — Giving advice / warning",exprs:[
+    {jp:"〜ほうがいいですよ。",en:"It would be better to ~.",zh:"〜的话比较好。",ko:"〜하는 게 좋겠어요.",vi:"Tốt hơn là nên ~."},
+    {jp:"〜んじゃないかな。／〜んじゃないかと思うんですが。",en:"I wonder if it's not ~ / I think it might be ~.",zh:"我觉得是不是〜？",ko:"〜은 아닐까요? / 〜인 것 같은데요.",vi:"Tôi không biết có phải ~ không? / Tôi nghĩ có thể là ~."},
+    {jp:"〜と思うけど。",en:"I think ~, but…",zh:"我觉得〜，不过……",ko:"〜라고 생각하는데.",vi:"Tôi nghĩ ~, nhưng…"},
+    {jp:"何かお気づきの点がありましたら、おっしゃってください。",en:"If you notice anything, please let me know.",zh:"如果您有任何发现，请告诉我。",ko:"뭔가 느끼신 점이 있으시면 말씀해 주세요.",vi:"Nếu bạn nhận thấy điều gì, hãy cho tôi biết."},
+  ]},
+  {id:"receive",title:"注意を受ける・あやまる — Receiving advice / apologizing",exprs:[
+    {jp:"申し訳ございません。／申し訳ございませんでした。",en:"I'm terribly sorry. / I was terribly sorry.",zh:"非常抱歉。",ko:"정말 죄송합니다.",vi:"Tôi vô cùng xin lỗi."},
+    {jp:"今後／これから　気をつけます。",en:"I will be careful from now on.",zh:"今后我会注意的。",ko:"앞으로 조심하겠습니다.",vi:"Tôi sẽ cẩn thận hơn từ nay."},
+    {jp:"〜ようなんですが…。",en:"It seems like ~ …",zh:"好像是〜……",ko:"〜인 것 같습니다만……",vi:"Có vẻ như ~ …"},
+    {jp:"ご忠告ありがとうございました。",en:"Thank you for your advice.",zh:"感谢您的忠告。",ko:"충고해 주셔서 감사합니다.",vi:"Cảm ơn vì lời khuyên của bạn."},
+  ]},
+ ],
+ dialogueSections:[
+  {id:"d1",title:"談話1 — 注意をする・あやまる",
+   sub1:["①おじぎをする","①お客様と話す","①他社を訪問する","①お客様に電話をかける"],
+   sub2:["②もう少し深くした","②足を組まない","②地味なネクタイをしめて行った","②「もしもし」と言わない"],
+   lines:[
+    {sp:"A",ja:"ダニーさん、ちょっといいですか。",en:"Danny, do you have a moment?",zh:"丹尼，你有空吗？",ko:"대니 씨, 잠깐 괜찮아요?",vi:"Danny, bạn có rảnh một chút không?"},
+    {sp:"B",ja:"はい、何でしょうか。",en:"Yes, what is it?",zh:"是的，什么事？",ko:"네, 무슨 일이죠?",vi:"Vâng, có chuyện gì vậy?"},
+    {sp:"A",ja:"①おじぎをする時、②もう少し深くしたほうがいいですよ。",en:"When ①bowing, it would be better ②to bow a little deeper.",zh:"①鞠躬的时候，②再深一点比较好。",ko:"①인사할 때, ②좀 더 깊이 하는 게 좋겠어요.",vi:"Khi ①cúi chào, tốt hơn là ②cúi sâu hơn một chút."},
+    {sp:"B",ja:"わかりました。今後気をつけます。",en:"I understand. I'll be careful from now on.",zh:"明白了，我以后会注意的。",ko:"알겠습니다. 앞으로 조심하겠습니다.",vi:"Tôi hiểu rồi. Tôi sẽ cẩn thận hơn từ nay."},
+   ]},
+  {id:"d2",title:"談話2 — 婉曲的に注意をする",
+   sub1:["①この企画、コストが高すぎる","①その靴、ちょっと汚い","①この報告書、見にくい","①そのヘアスタイル、ちょっと長すぎる"],
+   sub2:["②見直す必要がある","②お客様の目につく","②調査結果をグラフにしたら良くなる","②営業には向かない"],
+   lines:[
+    {sp:"A",ja:"森山君、①この企画、コストが高すぎるんじゃないかな。②見直す必要があると思うけど。",en:"Moriyama, I wonder if ①this project's cost isn't too high. I think ②it needs to be reconsidered.",zh:"森山，我觉得①这个企划成本是不是太高了。我认为②有必要重新审视一下。",ko:"모리야마 씨, ①이 기획, 비용이 너무 높은 거 아닐까요. ②재검토할 필요가 있다고 생각하는데요.",vi:"Moriyama, tôi không biết ①chi phí dự án này có quá cao không. Tôi nghĩ ②cần xem xét lại."},
+    {sp:"B",ja:"わかりました。またお気づきの点がありましたら、おっしゃってください。",en:"Understood. If you notice anything else, please let me know.",zh:"明白了。如果您还有什么发现，请告诉我。",ko:"알겠습니다. 또 느끼신 점이 있으시면 말씀해 주세요.",vi:"Tôi hiểu. Nếu bạn nhận thấy điều gì khác, hãy cho tôi biết."},
+   ]},
+  {id:"d3",title:"談話3 — 他社の人に苦情を言う・あやまる",
+   sub1:["①先日お願いした商品見本がまだ届いていない","①お願いした請求書がまだ届いていない","①発注書と違う商品が納品された","①昨日までにとお約束したお返事がいただけていない"],
+   sub2:["②お届けいたします","②確認して電話する","②取り替える","②担当の者から連絡する"],
+   lines:[
+    {sp:"A",ja:"①先日お願いした商品見本がまだ届いていないようなんですが…。",en:"It seems like ①the product samples I requested the other day haven't arrived yet…",zh:"①前几天我委托的商品样本好像还没有到……",ko:"①요전에 부탁드린 상품 견본이 아직 도착하지 않은 것 같습니다만……",vi:"Có vẻ như ①mẫu sản phẩm tôi đã đặt hôm trước vẫn chưa đến…"},
+    {sp:"B",ja:"大変申し訳ございません。至急②お届けいたします。",en:"We are terribly sorry. We will ②deliver it to you urgently.",zh:"非常抱歉，我们将立即②为您送达。",ko:"정말 죄송합니다. 지금 바로 ②배송하겠습니다.",vi:"Chúng tôi vô cùng xin lỗi. Chúng tôi sẽ ②giao hàng ngay."},
+   ]},
+ ],
+ scenarios:[
+  {id:"s1",title:"シナリオ1：上司から注意を受ける",
+   ill:{bg:"linear-gradient(180deg,#ebf5fb,#d6eaf8)",desc:"上司から仕事のやり方について注意を受けました。",descEn:"Your supervisor gives you advice about your work manner.",
+     people:[{body:"suit-dark",hasFemale:false,bowing:false,label:"上司"},{body:"suit-blue",hasFemale:false,bowing:true,label:"あなた"}]},
+   quiz:[
+    {q:"上司から注意を受けた時、何と言いますか？",qEn:"What do you say when your supervisor gives you advice?",
+     choices:["わかりました。今後気をつけます。","そうですか。","でも、私の国では違います。","ありがとう。"],
+     correct:0,explain:"「わかりました。今後気をつけます」は注意を受けた時の適切な返答です。",explainEn:"'わかりました。今後気をつけます' is the appropriate response when receiving advice."},
+    {q:"注意してくれた後にお礼を言う時は？",qEn:"How do you thank someone for their advice?",
+     choices:["ご忠告ありがとうございました。","うるさい。","わかっています。","大丈夫です。"],
+     correct:0,explain:"「ご忠告ありがとうございました」は注意・アドバイスへのお礼の表現です。",explainEn:"'ご忠告ありがとうございました' is the expression for thanking someone for their advice."},
+   ],
+   sort:[{instruction:"正しい順番に並べ替えてください",instructionEn:"Put the words in the correct order",
+     parts:["申し訳ございません。","今後","気をつけます。"],
+     answer:[0,1,2],correct:"申し訳ございません。今後気をつけます。"}]
+  },
+  {id:"s2",title:"シナリオ2：婉曲的に注意をする",
+   ill:{bg:"linear-gradient(180deg,#fef9e7,#fdebd0)",desc:"部下の仕事のやり方が気になります。やわらかく注意します。",descEn:"You want to gently advise a colleague about their work.",
+     people:[{body:"suit-dark",hasFemale:false,bowing:false,label:"あなた（上司）"},{body:"suit-blue",hasFemale:false,bowing:false,label:"部下"}]},
+   quiz:[
+    {q:"婉曲的に注意する時の表現は？",qEn:"Which expression is used for indirect advice?",
+     choices:["〜んじゃないかと思うんですが。","ダメですよ！","それは間違いです。","やり直してください。"],
+     correct:0,explain:"「〜んじゃないかと思うんですが」は相手を傷つけずに間接的に注意する表現です。",explainEn:"'〜んじゃないかと思うんですが' is used to give indirect advice without hurting the other person."},
+   ],
+   sort:[{instruction:"正しい順番に並べ替えてください",instructionEn:"Put the words in the correct order",
+     parts:["コストが高すぎる","この企画、","んじゃないかな。"],
+     answer:[1,0,2],correct:"この企画、コストが高すぎるんじゃないかな。"}]
+  },
+ ]
+};
+
+// LESSON 5 DATA
+const L5={
+ vocabSections:[
+  {id:"d1",title:"談話1 — 上司に依頼する",words:[
+    {jp:"依頼（する）",rd:"いらい",en:"request / to request",zh:"依赖/委托",ko:"의뢰（하다）",vi:"nhờ / yêu cầu"},
+    {jp:"目を通す",rd:"めをとおす",en:"to look over / to skim through",zh:"过目/浏览",ko:"훑어보다",vi:"lướt qua / xem sơ"},
+    {jp:"印鑑",rd:"いんかん",en:"personal seal / stamp",zh:"印章/印鉴",ko:"도장",vi:"con dấu cá nhân"},
+    {jp:"チェック（する）",rd:"—",en:"check / to check",zh:"检查/确认",ko:"체크（하다）",vi:"kiểm tra"},
+    {jp:"先方",rd:"せんぽう",en:"the other party / them",zh:"对方",ko:"상대방",vi:"phía bên kia"},
+    {jp:"プラン",rd:"—",en:"plan",zh:"计划/方案",ko:"플랜",vi:"kế hoạch"},
+    {jp:"手が離せない",rd:"てがはなせない",en:"can't get away / hands are full",zh:"脱不开身/手头忙",ko:"손을 뗄 수 없다",vi:"không rời tay được / đang bận"},
+  ]},
+  {id:"d2",title:"談話2 — 依頼されたことを確認する",words:[
+    {jp:"売り上げ",rd:"うりあげ",en:"sales / revenue",zh:"销售额",ko:"매출",vi:"doanh thu"},
+    {jp:"データ",rd:"—",en:"data",zh:"数据",ko:"데이터",vi:"dữ liệu"},
+    {jp:"昨年度",rd:"さくねんど",en:"last year / previous year",zh:"去年（年度）",ko:"작년도",vi:"năm ngoái (niên độ)"},
+    {jp:"決算",rd:"けっさん",en:"financial settlement / closing of accounts",zh:"结算/决算",ko:"결산",vi:"quyết toán tài chính"},
+    {jp:"ファイル",rd:"—",en:"file",zh:"文件/档案",ko:"파일",vi:"tệp / hồ sơ"},
+  ]},
+  {id:"d3",title:"談話3 — 上司の依頼を断る",words:[
+    {jp:"断る",rd:"ことわる",en:"to refuse / to decline",zh:"拒绝",ko:"거절하다",vi:"từ chối"},
+    {jp:"訳す",rd:"やくす",en:"to translate",zh:"翻译",ko:"번역하다",vi:"dịch"},
+    {jp:"しめきり",rd:"—",en:"deadline",zh:"截止日期",ko:"마감",vi:"hạn chót"},
+    {jp:"急ぎ",rd:"いそぎ",en:"urgency / hurry",zh:"紧急/赶紧",ko:"급히/서둘러",vi:"gấp / vội"},
+    {jp:"出社（する）",rd:"しゅっしゃ",en:"to go to work / to come to the office",zh:"上班/到公司",ko:"출근（하다）",vi:"đi làm / đến công ty"},
+    {jp:"友人",rd:"ゆうじん",en:"friend",zh:"朋友",ko:"친구",vi:"bạn bè"},
+    {jp:"見合い",rd:"みあい",en:"matchmaking meeting",zh:"相亲",ko:"맞선",vi:"gặp mặt mai mối"},
+  ]},
+  {id:"d4",title:"談話4 — 交渉する",words:[
+    {jp:"交渉",rd:"こうしょう",en:"negotiation",zh:"谈判/交涉",ko:"교섭/협상",vi:"đàm phán"},
+    {jp:"勉強（する）",rd:"べんきょう",en:"to negotiate a price / discount",zh:"（价格上）努力/优惠",ko:"（가격）노력하다/깎다",vi:"cố gắng (về giá) / giảm giá"},
+    {jp:"まける",rd:"—",en:"to lower the price / to give a discount",zh:"打折/降价",ko:"깎아주다",vi:"giảm giá / bớt tiền"},
+  ]},
+  {id:"d5",title:"談話5 — 勧誘を断る",words:[
+    {jp:"勧誘",rd:"かんゆう",en:"invitation / solicitation",zh:"劝说/邀请",ko:"권유/권유",vi:"mời chào / rủ rê"},
+    {jp:"お得",rd:"おとく",en:"a good deal / bargain",zh:"划算/优惠",ko:"이득/유리하다",vi:"có lợi / hời"},
+    {jp:"保険",rd:"ほけん",en:"insurance",zh:"保险",ko:"보험",vi:"bảo hiểm"},
+  ]},
+  {id:"r1",title:"練習1",words:[
+    {jp:"できあがる",rd:"—",en:"to be completed / to be finished",zh:"完成/做好",ko:"완성되다",vi:"hoàn thành"},
+    {jp:"出勤（する）",rd:"しゅっきん",en:"to go to work",zh:"上班/出勤",ko:"출근（하다）",vi:"đi làm"},
+    {jp:"入力（する）",rd:"にゅうりょく",en:"to input / data entry",zh:"输入",ko:"입력（하다）",vi:"nhập dữ liệu"},
+    {jp:"トラブル",rd:"—",en:"trouble / problem",zh:"麻烦/故障",ko:"트러블/문제",vi:"rắc rối / sự cố"},
+    {jp:"検査",rd:"けんさ",en:"inspection / examination",zh:"检查/检验",ko:"검사",vi:"kiểm tra / kiểm định"},
+    {jp:"クレーム",rd:"—",en:"complaint",zh:"投诉",ko:"클레임/불만",vi:"khiếu nại"},
+    {jp:"さぼる",rd:"—",en:"to slack off / to skip",zh:"偷懒/逃避",ko:"빠지다/게으름피우다",vi:"trốn tránh / làm biếng"},
+  ]},
+ ],
+ exprSections:[
+  {id:"request",title:"依頼する — Making a request",exprs:[
+    {jp:"お忙しいところすみません。",en:"Sorry to bother you when you're busy.",zh:"打扰您了，不好意思。",ko:"바쁘신데 죄송합니다.",vi:"Xin lỗi đã làm phiền khi bạn đang bận."},
+    {jp:"ちょっと／今　よろしいでしょうか。",en:"Do you have a moment right now?",zh:"现在方便吗？",ko:"지금 잠깐 괜찮으세요?",vi:"Bây giờ bạn có rảnh không?"},
+    {jp:"〜ていただけないでしょうか。",en:"Could you please ~? (most polite)",zh:"能请您〜吗？（最礼貌）",ko:"〜해 주시겠습니까?（가장 정중）",vi:"Bạn có thể ~ không? (lịch sự nhất)"},
+    {jp:"〜てくれませんか。",en:"Won't you ~? (casual)",zh:"你能〜吗？（随意）",ko:"〜해 줄 수 없어요?（비공식）",vi:"Bạn có thể ~ không? (thân mật)"},
+    {jp:"〜てもらえないかなあ。",en:"I wonder if you could ~ (casual, male)",zh:"你能〜吗？（随意，男性）",ko:"〜해 줄 수 없을까?（비공식）",vi:"Không biết bạn có thể ~ không? (thân mật)"},
+    {jp:"すみませんが",en:"I'm sorry, but… (softener)",zh:"不好意思，……",ko:"죄송한데요,",vi:"Xin lỗi, nhưng…"},
+    {jp:"申し訳ないんですが",en:"I'm sorry to ask, but…",zh:"不好意思，……（更礼貌）",ko:"미안한데요,",vi:"Xin lỗi vì phải hỏi, nhưng…"},
+    {jp:"悪いけど／悪いんですが",en:"I feel bad asking, but…",zh:"不好意思，……（较随意）",ko:"미안하지만,",vi:"Tôi cảm thấy ngại khi hỏi, nhưng…"},
+  ]},
+  {id:"refuse",title:"断る — Declining a request",exprs:[
+    {jp:"〜ところなんです。",en:"I'm just about to ~ / I'm in the middle of ~.",zh:"我正要〜。",ko:"〜하려는 참입니다.",vi:"Tôi đang chuẩn bị ~ / Tôi đang ~."},
+    {jp:"〜もので…。",en:"Because of ~ … (reason)",zh:"因为〜……",ko:"〜이라서요……",vi:"Vì ~ … (lý do)"},
+    {jp:"〜んですが…。",en:"It's that ~ … (indirect refusal)",zh:"其实是〜……",ko:"〜인데요……",vi:"Là vì ~ … (từ chối gián tiếp)"},
+    {jp:"ちょっと難しいんですが…。",en:"It's a little difficult…",zh:"有点困难……",ko:"좀 어렵습니다만……",vi:"Hơi khó một chút…"},
+  ]},
+ ],
+ dialogueSections:[
+  {id:"d1",title:"談話1 — 上司に依頼する",
+   sub1:["①お忙しいところすみません","①お忙しいところ恐れ入ります","①ちょっとよろしいでしょうか","①今よろしいでしょうか"],
+   sub2:["②この資料に目を通す","②この書類に印鑑を押す","②この書類をチェックする","②先日の件で先方の部長に連絡する"],
+   lines:[
+    {sp:"A",ja:"部長、①お忙しいところすみません。",en:"Manager, ①sorry to bother you when you're busy.",zh:"部长，①打扰您了，不好意思。",ko:"부장님, ①바쁘신데 죄송합니다.",vi:"Trưởng phòng, ①xin lỗi đã làm phiền khi bạn đang bận."},
+    {sp:"B",ja:"はい、何ですか。",en:"Yes, what is it?",zh:"是的，什么事？",ko:"네, 무슨 일이에요?",vi:"Vâng, có chuyện gì?"},
+    {sp:"A",ja:"②この資料に目を通していただけないでしょうか。",en:"Could you please ②look over these documents?",zh:"请您能②过目一下这份资料吗？",ko:"②이 자료를 검토해 주시겠습니까?",vi:"Bạn có thể ②xem qua tài liệu này không?"},
+    {sp:"B",ja:"いいですよ。",en:"Sure, no problem.",zh:"好的。",ko:"좋아요.",vi:"Được thôi."},
+   ]},
+  {id:"d2",title:"談話2 — 依頼されたことを確認する",
+   sub1:["①先月の売り上げデータ","①X社から送られてきた見積もり","①来週の会議の資料","①昨年度の決算ファイル"],
+   sub2:["②先月のデータ","②X社の見積もり","②来週の資料","②昨年度のファイル"],
+   lines:[
+    {sp:"A",ja:"イーさん、①先月の売り上げデータを部長に渡しておいて。",en:"Lee, please pass ①last month's sales data to the manager.",zh:"李，把①上个月的销售数据转交给部长。",ko:"이 씨, ①지난달 매출 데이터를 부장님께 전달해 줘요.",vi:"Lee, hãy chuyển ①dữ liệu doanh thu tháng trước cho trưởng phòng."},
+    {sp:"B",ja:"はい。②先月のデータですね。",en:"Yes. ②Last month's data, right?",zh:"好的。②上个月的数据，对吗？",ko:"네. ②지난달 데이터 말이죠?",vi:"Vâng. ②Dữ liệu tháng trước phải không?"},
+   ]},
+  {id:"d3",title:"談話3 — 上司の依頼を断る",
+   sub1:["①手伝う","①コピーする","①日本語に訳す","①資料を作る","①英語を教える"],
+   sub2:["②今から打ち合わせで出かける","②社長に呼ばれて、今行く","②今から外出する","②今日しめきりの報告書を書いている","②急ぎの資料を作っている"],
+   lines:[
+    {sp:"A",ja:"イーさん、すみませんが、ちょっと①手伝ってくれませんか。",en:"Lee, I'm sorry, but could you ①help me a little?",zh:"李，不好意思，你能①帮我一下吗？",ko:"이 씨, 미안한데, ①좀 도와줄 수 없어요?",vi:"Lee, xin lỗi, bạn có thể ①giúp tôi một chút không?"},
+    {sp:"B",ja:"すみません、②今から打ち合わせで出かけるところなんです。後でもよいですか。",en:"I'm sorry, ②I'm just about to go out for a meeting. Is later okay?",zh:"抱歉，②我正要去开碰头会。之后可以吗？",ko:"죄송해요, ②지금 미팅으로 나가려는 참이에요. 나중에 해도 될까요?",vi:"Xin lỗi, ②tôi đang chuẩn bị đi họp. Sau được không?"},
+   ]},
+ ],
+ scenarios:[
+  {id:"s1",title:"シナリオ1：上司に丁寧に依頼する",
+   ill:{bg:"linear-gradient(180deg,#e8f8f5,#d5f5e3)",desc:"上司に資料の確認をお願いします。",descEn:"You ask your supervisor to check some documents.",
+     people:[{body:"suit-blue",hasFemale:false,bowing:true,label:"あなた"},{body:"suit-dark",hasFemale:false,bowing:false,label:"上司"}]},
+   quiz:[
+    {q:"上司に依頼する時の丁寧な表現は？",qEn:"What is the polite way to make a request to your supervisor?",
+     choices:["〜ていただけないでしょうか。","〜してください。","〜してよ。","〜してもらえる？"],
+     correct:0,explain:"「〜ていただけないでしょうか」は最も丁寧な依頼の表現で、上司や目上の人に使います。",explainEn:"'〜ていただけないでしょうか' is the most polite request form, used with superiors."},
+    {q:"依頼の前置きとして何を言いますか？",qEn:"What do you say before making a request?",
+     choices:["お忙しいところすみません。","ねえ、ちょっと。","時間ありますか。","すみません。"],
+     correct:0,explain:"「お忙しいところすみません」は依頼の前に相手への配慮を示す表現です。",explainEn:"'お忙しいところすみません' shows consideration for the other person before making a request."},
+   ],
+   sort:[{instruction:"正しい順番に並べ替えてください",instructionEn:"Put the words in the correct order",
+     parts:["この資料に","お忙しいところすみません。","目を通していただけないでしょうか。"],
+     answer:[1,0,2],correct:"お忙しいところすみません。この資料に目を通していただけないでしょうか。"}]
+  },
+  {id:"s2",title:"シナリオ2：上司の依頼を丁寧に断る",
+   ill:{bg:"linear-gradient(180deg,#fef9e7,#fdebd0)",desc:"上司から頼まれましたが、今は手が離せません。",descEn:"Your supervisor asks for help but you're currently busy.",
+     people:[{body:"suit-dark",hasFemale:false,bowing:false,label:"上司"},{body:"blouse",hasFemale:true,bowing:true,label:"あなた"}]},
+   quiz:[
+    {q:"上司の依頼を断る時に使う表現は？",qEn:"Which expression is used when declining a supervisor's request?",
+     choices:["すみません、〜ところなんです。","いやです。","できません。","無理です。"],
+     correct:0,explain:"「すみません、〜ところなんです」は理由を述べながら丁寧に断る表現です。",explainEn:"'すみません、〜ところなんです' is used to politely decline while explaining your reason."},
+    {q:"断った後に何と言いますか？",qEn:"What do you say after declining?",
+     choices:["後でもよいですか。","さようなら。","わかりません。","もう帰ります。"],
+     correct:0,explain:"「後でもよいですか」と代替案を提示するのが丁寧な断り方です。",explainEn:"Offering an alternative like '後でもよいですか' makes a polite refusal."},
+   ],
+   sort:[{instruction:"正しい順番に並べ替えてください",instructionEn:"Put the words in the correct order",
+     parts:["すみません、","打ち合わせで出かける","今から","ところなんです。"],
+     answer:[0,2,1,3],correct:"すみません、今から打ち合わせで出かけるところなんです。"}]
+  },
+ ]
+};
+practiceState['l4']={type:'quiz',si:0,qi:0,score:0,answered:false};
+practiceState['l5']={type:'quiz',si:0,qi:0,score:0,answered:false};
+
+// INIT
+// ════════════════════════════════════════
+renderVocab('l1',L1);renderExpr('l1',L1);renderDialogue('l1',L1);renderPractice('l1');
+renderVocab('l2',L2);renderExpr('l2',L2);renderDialogue('l2',L2);
+renderVocab('l3',L3);renderExpr('l3',L3);renderDialogue('l3',L3);
+renderVocab('l4',L4);renderExpr('l4',L4);renderDialogue('l4',L4);
+renderVocab('l5',L5);renderExpr('l5',L5);renderDialogue('l5',L5);
+</script>
+</body>
+</html>
