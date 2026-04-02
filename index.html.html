@@ -462,7 +462,7 @@ style="flex:1;padding:7px 10px;border-radius:8px;border:1.5px solid #bae6fd;font
 <button class="lesson-tab" onclick="checkSubAndSwitch(5,this)">🔒 第5課 依頼メール</button>
 <button class="lesson-tab" onclick="checkSubAndSwitch(6,this)">🔒 第6課 お詫びメール</button>
 <button class="lesson-tab" onclick="checkSubAndSwitch('expr',this)">🔒 表現まとめ</button>
-<button class="lesson-tab" onclick="checkSubAndSwitch('roleplay',this)">🔒 会話練習</button>
+<button class="lesson-tab" onclick="checkSubAndSwitch('roleplay',this)">🔒 会話練習（選択式）</button>
 <button class="lesson-tab" onclick="checkSubAndSwitch('levelcheck',this)">🔒 レベルチェック</button>
 <button class="lesson-tab" onclick="checkSubAndSwitch('cert',this)">🔒 認定書</button>
 </div>
@@ -944,10 +944,7 @@ style="flex:1;padding:7px 10px;border-radius:8px;border:1.5px solid #bae6fd;font
 <h2 style="font-size:1.3rem;font-weight:700;margin-bottom:4px">会話練習 — ロールプレイ</h2>
 <p style="font-size:0.82rem;opacity:0.9">場面を選んで会話を練習しましょう</p>
 </div>
-<div class="mode-tabs">
-<button class="mode-tab active" id="mode-btn-choice" onclick="setRpMode('choice')">🎯 選択式</button>
-<button class="mode-tab" id="mode-btn-chat" onclick="setRpMode('chat')">💬 AI会話練習</button>
-</div>
+
 <div id="rp-scene-select">
 <h3 style="font-size:0.95rem;font-weight:700;color:#0e7bb8;margin-bottom:14px">場面を選んでください</h3>
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">
@@ -978,37 +975,7 @@ style="flex:1;padding:7px 10px;border-radius:8px;border:1.5px solid #bae6fd;font
 </div>
 </div>
 <div id="rp-game" style="display:none;margin-top:8px"></div>
-<div id="rp-chat-area" style="display:none">
-<div style="background:white;border-radius:12px;border:1.5px solid #bae6fd;overflow:hidden">
-<div style="background:linear-gradient(135deg,#0891b2,#29abe2);color:white;padding:14px 18px">
-<div style="font-weight:700;font-size:0.93rem">💬 AI会話練習</div>
-<div style="font-size:0.75rem;opacity:0.85;margin-top:2px">AIがビジネス日本語の会話相手になります</div>
-</div>
-<div style="padding:12px 16px;background:#e0f7ff;border-bottom:1px solid #bae6fd">
-<div style="font-size:0.78rem;font-weight:700;color:#0369a1;margin-bottom:6px">場面を選んでください</div>
-<div style="display:flex;gap:8px;flex-wrap:wrap">
-<button onclick="startAiChat(0)" class="sec-btn" style="font-size:0.75rem">🏢 会議の開始</button>
-<button onclick="startAiChat(1)" class="sec-btn" style="font-size:0.75rem">💬 意見を言う</button>
-<button onclick="startAiChat(2)" class="sec-btn" style="font-size:0.75rem">🤝 反対・折衷</button>
-<button onclick="startAiChat(3)" class="sec-btn" style="font-size:0.75rem">📧 メール相談</button>
-</div>
-</div>
-<div id="chat-messages" class="chat-wrap" style="display:none"></div>
-<div id="chat-start-msg" style="padding:28px;text-align:center;color:#64748b;font-size:0.88rem">
-上の場面を選ぶとAIとの練習が始まります
-</div>
-<div id="chat-input-area" style="padding:12px 16px;border-top:1px solid #bae6fd;display:none">
-<div id="chat-hint" class="hint-box" style="display:none"></div>
-<div class="chat-input-wrap" style="margin-top:8px">
-<textarea class="chat-input" id="chat-input" placeholder="ここに日本語で入力してください..." rows="2" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChatMsg();}"></textarea>
-<div style="display:flex;flex-direction:column;gap:6px">
-<button class="chat-send-btn" id="chat-send-btn" onclick="sendChatMsg()">送信</button>
-<button onclick="showHint()" style="padding:6px 10px;border-radius:8px;border:1.5px solid #bae6fd;background:white;color:#0891b2;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit">ヒント</button>
-</div>
-</div>
-</div>
-</div>
-</div>
+
 </div>
 </div>
 <div id="lesson-roleplay" class="lesson-pane">
@@ -1143,7 +1110,7 @@ vocabSections:[
 {jp:'確認事項',rd:'かくにんじこう',en:'items to confirm',zh:'确认事项',ko:'확인사항',vi:'các điểm cần xác nhận'},
 ]},
 {id:'s2',title:'四字熟語・慣用句',words:[
-{jp:'異口同音（いこどうおん）',rd:'いこどうおん',en:'with one voice / unanimously',zh:'异口同声',ko:'이구동성',vi:'đồng thanh nhất trí',note:'四字熟語'},
+{jp:'異口同音（いこどうおん）',rd:'いくどうおん',en:'with one voice / unanimously',zh:'异口同声',ko:'이구동성',vi:'đồng thanh nhất trí',note:'四字熟語'},
 {jp:'試行錯誤（しこうさくご）',rd:'しこうさくご',en:'trial and error',zh:'试行错误',ko:'시행착오',vi:'thử và sai',note:'四字熟語'},
 {jp:'段取りをつける',rd:'だんどりをつける',en:'to make arrangements / to prepare steps',zh:'做好安排',ko:'준비를 갖추다',vi:'sắp xếp / chuẩn bị',note:'慣用句'},
 {jp:'根回しをする',rd:'ねまわしをする',en:'to lay the groundwork / to lobby in advance',zh:'事先疏通',ko:'사전 조율을 하다',vi:'vận động hành lang trước',note:'慣用句'},
@@ -1977,130 +1944,7 @@ btn.textContent = '使い方を見る';
 if(isSubscribed) {
 document.addEventListener('DOMContentLoaded', updateTabStyles);
 }
-// ══ AI CHAT MODE ══
-let rpMode = 'choice';
-let chatHistory = [];
-let currentChatScene = -1;
-const chatScenePrompts = [
-{
-label:'会議の開始',
-system:`あなたは日本語のビジネス会議の参加者です。ユーザーが会議の進行役として練習しています。
-自然なビジネス日本語で短く返答してください（1〜2文）。
-ユーザーの日本語が不自然な場合は、さりげなく正しい表現を使って返してください。
-会議の流れ：開会 → 議題の確認 → 質問 → まとめ。
-返答は必ず日本語で。英語の説明は不要です。`,
-opening:'（会議室に参加者が集まりました。あなたは進行役です。会議を始めてください。）',
-hint:'「では、本日の〇〇会議を始めます。」など、会議を正式に開く言葉から始めましょう。'
-},
-{
-label:'意見を言う',
-system:`あなたは日本語のビジネス会議の上司（部長）です。ユーザーがスタッフとして意見を述べる練習をしています。
-自然なビジネス日本語で短く返答してください（1〜2文）。
-ユーザーに意見や懸念を述べるよう促し、会話を続けてください。
-返答は必ず日本語で。`,
-opening:'（定例会議中です。部長のあなたが意見を求めています。）\n「この新しいプロジェクト案について、皆さんのご意見をお聞きしたいと思います。いかがでしょうか。」',
-hint:'「私の見解を申し上げますと、〜と考えております。」または「〜という点が懸念されます。」を使ってみましょう。'
-},
-{
-label:'反対・折衷',
-system:`あなたは日本語のビジネス会議の同僚です。コスト削減案を提案しています。ユーザーが丁寧に反対し、折衷案を提示する練習をしています。
-自然なビジネス日本語で短く返答してください（1〜2文）。
-ユーザーが反対した時は少し驚くが、話し合いを続けてください。
-返答は必ず日本語で。`,
-opening:'（会議中です。同僚があなたに提案を説明しています。）\n「今回の予算削減案として、全部門のコストを20%カットすることを提案いたします。いかがでしょうか。」',
-hint:'「おっしゃることはよくわかりますが、〜が懸念されます。」で始めて、「折り合いをつけるとすれば、〜はいかがでしょうか。」で折衷案を提示しましょう。'
-},
-{
-label:'メール相談',
-system:`あなたは日本語のビジネスメールの先生です。ユーザーがビジネスメールの書き方を練習しています。
-ユーザーがメールの文章を書いたら、自然なビジネス日本語に直してフィードバックをしてください。
-返答は日本語で、わかりやすく短く説明してください。`,
-opening:'（メール練習モードです。）\n「ビジネスメールを練習しましょう。まず依頼メールの書き出しを書いてみてください。」',
-hint:'「お世話になっております。〔社名〕の〔名前〕でございます。」から始めましょう。'
-},
-];
-function setRpMode(mode) {
-rpMode = mode;
-document.getElementById('mode-btn-choice').classList.toggle('active', mode==='choice');
-document.getElementById('mode-btn-chat').classList.toggle('active', mode==='chat');
-document.getElementById('rp-scene-select').style.display = mode==='choice' ? 'block' : 'none';
-document.getElementById('rp-game').style.display = 'none';
-document.getElementById('rp-chat-area').style.display = mode==='chat' ? 'block' : 'none';
-if(mode==='chat') {
-document.getElementById('chat-messages').style.display='none';
-document.getElementById('chat-start-msg').style.display='block';
-document.getElementById('chat-input-area').style.display='none';
-}
-}
-async function startAiChat(sceneIdx) {
-currentChatScene = sceneIdx;
-const scene = chatScenePrompts[sceneIdx];
-chatHistory = [];
-document.querySelectorAll('#rp-chat-area .sec-btn').forEach(b=>b.classList.remove('active'));
-event.target.classList.add('active');
-const messagesEl = document.getElementById('chat-messages');
-messagesEl.style.display = 'flex';
-document.getElementById('chat-start-msg').style.display='none';
-document.getElementById('chat-input-area').style.display='block';
-document.getElementById('chat-hint').style.display='none';
-messagesEl.innerHTML = `<div class="chat-bubble ai"><div class="speaker">🤖 AI練習パートナー</div>${scene.opening.replace(/\n/g,'<br>')}</div>`;
-chatHistory.push({role:'assistant', content: scene.opening});
-messagesEl.scrollTop = messagesEl.scrollHeight;
-}
-async function sendChatMsg() {
-if(currentChatScene < 0) return;
-const input = document.getElementById('chat-input');
-const text = input.value.trim();
-if(!text) return;
-const scene = chatScenePrompts[currentChatScene];
-const sendBtn = document.getElementById('chat-send-btn');
-const messagesEl = document.getElementById('chat-messages');
-// Show user message
-messagesEl.innerHTML += `<div class="chat-bubble user"><div class="speaker">あなた</div>${text}</div>`;
-input.value = '';
-sendBtn.disabled = true;
-sendBtn.textContent = '送信中...';
-document.getElementById('chat-hint').style.display='none';
-messagesEl.scrollTop = messagesEl.scrollHeight;
-chatHistory.push({role:'user', content: text});
-// Loading bubble
-const loadingId = 'loading-'+Date.now();
-messagesEl.innerHTML += `<div class="chat-bubble ai" id="${loadingId}"><div class="speaker">🤖 AI練習パートナー</div><span style="color:#94a3b8">入力中...</span></div>`;
-messagesEl.scrollTop = messagesEl.scrollHeight;
-try {
-const response = await fetch('https://api.anthropic.com/v1/messages', {
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body: JSON.stringify({
-model:'claude-sonnet-4-20250514',
-max_tokens:1000,
-system: scene.system,
-messages: chatHistory
-})
-});
-const data = await response.json();
-const aiText = data.content?.[0]?.text || '申し訳ありません。もう一度お試しください。';
-// Remove loading, add real response
-const loadingEl = document.getElementById(loadingId);
-if(loadingEl) loadingEl.remove();
-messagesEl.innerHTML += `<div class="chat-bubble ai"><div class="speaker">🤖 AI練習パートナー</div>${aiText.replace(/\n/g,'<br>')}</div>`;
-chatHistory.push({role:'assistant', content: aiText});
-speak(aiText.replace(/<[^>]*>/g,''), 'ja-JP');
-} catch(e) {
-const loadingEl = document.getElementById(loadingId);
-if(loadingEl) loadingEl.innerHTML = '<div class="speaker">🤖 AI練習パートナー</div><span style="color:#dc2626">接続エラーが発生しました。もう一度お試しください。</span>';
-}
-sendBtn.disabled = false;
-sendBtn.textContent = '送信';
-messagesEl.scrollTop = messagesEl.scrollHeight;
-}
-function showHint() {
-if(currentChatScene < 0) return;
-const hint = chatScenePrompts[currentChatScene].hint;
-const hintEl = document.getElementById('chat-hint');
-hintEl.textContent = '💡 ヒント：' + hint;
-hintEl.style.display = 'block';
-}
+
 // ══ ROLEPLAY DATA ══
 const rpScenes = [
 {
